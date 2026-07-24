@@ -39,16 +39,21 @@
 
 <div class="container">
 <form class="search-card" id="search-form">
+<div class="search-top-row">
+<div class="field field-finalidade">
+<label>Finalidade</label>
 <div class="finalidade-tabs" id="finalidade-tabs">
 <button type="button" class="finalidade-tab active" data-finalidade="Aluguel">Aluguel</button>
 <button type="button" class="finalidade-tab" data-finalidade="Venda">Venda</button>
 <button type="button" class="finalidade-tab" data-finalidade="Temporada">Temporada</button>
 </div>
-<div class="search-fields">
-<div class="field">
+</div>
+<div class="field field-tipo">
 <label for="filter-tipo">Tipo de imóvel</label>
 <select id="filter-tipo"><option value="">Todos os tipos</option></select>
 </div>
+</div>
+<div class="search-fields">
 <div class="field">
 <label for="filter-cidade">Cidade</label>
 <select id="filter-cidade"><option value="">Selecione a cidade</option></select>
@@ -57,10 +62,16 @@
 <label for="filter-bairro">Bairros</label>
 <select id="filter-bairro"><option value="">Todos os bairros</option></select>
 </div>
-<button class="btn-search" type="submit">Buscar</button>
+<button class="btn-search" type="submit">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+Buscar
+</button>
 </div>
 <div class="search-extra">
-<button type="button" class="link-toggle" id="toggle-keyword">Palavra-chave</button>
+<button type="button" class="link-toggle" id="toggle-keyword">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+Palavra-chave
+</button>
 <div class="field field-keyword" id="keyword-field" style="display:none;">
 <input type="text" id="search" placeholder="Bairro, cidade ou título...">
 </div>
