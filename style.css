@@ -380,9 +380,6 @@ box-shadow: var(--shadow);
 padding: 22px 24px;
 margin-top: 20px;
 }
-.detail-title-block .address-line {
-font-size: 14px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; margin-bottom: 8px;
-}
 .detail-title-block h1 { font-size: 24px; margin-bottom: 14px; }
 
 .detail-spec-row {
