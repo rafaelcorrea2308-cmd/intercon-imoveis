@@ -9,21 +9,13 @@
 
     function resolveUrl(getAsset, path) {
       if (!path) return '';
-      if (/^https?:\/\//.test(path) || /^data:/.test(path) || /^blob:/.test(path)) {
-        return path;
-      }
+      if (/^(https?:|data:|blob:)/.test(path)) return path;
       try {
         if (getAsset) {
           var asset = getAsset(path);
-          if (asset) {
-            if (typeof asset === 'string') {
-              if (asset !== path) return asset;
-            } else {
-              var str = asset.toString ? asset.toString() : '';
-              if (str && str !== '[object Object]' && str !== path) return str;
-              if (asset.url) return asset.url;
-            }
-          }
+          var str = (asset && typeof asset === 'string') ? asset : (asset && asset.toString ? asset.toString() : '');
+          if (str && /^(https?:|blob:|data:)/.test(str)) return str;
+          if (asset && asset.url && /^(https?:|blob:|data:)/.test(asset.url)) return asset.url;
         }
       } catch (e) {}
       var base = window.location.href.split('/admin')[0];
