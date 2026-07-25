@@ -148,6 +148,10 @@
       "imagens": [
         {
           "tipo": "imagem",
+          "src": "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp"
+        },
+        {
+          "tipo": "imagem",
           "src": "assets/anuncios/foto2.jpeg"
         },
         {
@@ -164,7 +168,6 @@
       "preco": 1345,
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
-      "imagem": "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp",
       "tipo": "Casa",
       "disponivel": true,
       "banheiros": 1,
