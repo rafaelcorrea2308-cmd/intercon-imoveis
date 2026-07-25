@@ -21,7 +21,8 @@ phone: `<svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0
 async function loadProperties() {
 const res = await fetch('properties.json');
 if (!res.ok) throw new Error('Não foi possível carregar properties.json');
-return res.json();
+const data = await res.json();
+return data.imoveis || [];
 }
 
 function extractUF(cidade) {
