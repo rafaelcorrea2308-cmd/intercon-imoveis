@@ -119,6 +119,33 @@
       "banheiros": 2,
       "titulo": "Casa no Amambaí",
       "id": "6"
+    },
+    {
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/foto2.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/foto2.jpeg"
+        }
+      ],
+      "quartos": 2,
+      "cidade": "Campo Grande - MS",
+      "bairro": "Aroeira",
+      "descricao": "casa boa",
+      "area": 132,
+      "vagas": 1,
+      "preco": 1345,
+      "finalidade": "Aluguel",
+      "whatsapp": "5567992277174",
+      "imagem": "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp",
+      "tipo": "Casa",
+      "disponivel": true,
+      "banheiros": 1,
+      "titulo": "vamos ver",
+      "id": "10"
     }
   ]
 }
