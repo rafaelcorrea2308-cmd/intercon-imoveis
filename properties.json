@@ -18,6 +18,8 @@
     { "tipo": "imagem", "src": "assets/anuncios/1/foto2.jpg" },
     { "tipo": "video",  "src": "assets/anuncios/1/video1.mp4" }
     ],
+    "mapaEmbedUrl": "https://www.google.com/maps?q=-20.43826,-54.6050715&output=embed",
+    "mapaLink": "https://www.google.com/maps?q=-20.43826,-54.6050715",
 "whatsapp": "5567992277174",
 "disponivel": true
 },
