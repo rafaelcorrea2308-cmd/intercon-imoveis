@@ -1,0 +1,34 @@
+{
+  "imagens": [
+    {
+      "tipo": "imagem",
+      "src": "assets/anuncios/1/foto1.jpg"
+    },
+    {
+      "tipo": "imagem",
+      "src": "assets/anuncios/1/foto2.jpg"
+    },
+    {
+      "tipo": "video",
+      "src": "assets/anuncios/1/video1.mp4"
+    }
+  ],
+  "quartos": 3,
+  "cidade": "Campo Grande - MS",
+  "bairro": "Jardim dos Estadoss",
+  "descricao": "Casa térrea bem iluminada, próxima ao Parque das Nações Indígenas. Quintal amplo, área de churrasqueira coberta e cozinha reformada. Ideal para família.",
+  "endereco": "rua doutor sebastiao jose machado, 202",
+  "area": 140,
+  "vagas": 2,
+  "preco": 1800,
+  "finalidade": "Aluguel",
+  "whatsapp": "5567992277174",
+  "imagem": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
+  "tipo": "Casa",
+  "disponivel": true,
+  "banheiros": 2,
+  "titulo": "Casa no Jardim dos Estados teste",
+  "id": "1",
+  "mapaEmbedUrl": "https://maps.app.goo.gl/3zHNYbPbVbecbZQw7",
+  "mapaLink": "https://maps.app.goo.gl/3zHNYbPbVbecbZQw7"
+}
