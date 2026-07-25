@@ -57,7 +57,6 @@ collections:
       - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int" }
       - { label: "Área (m²)", name: "area", widget: "number", value_type: "int" }
       - { label: "Descrição", name: "descricao", widget: "text" }
-      - { label: "Foto de capa", name: "imagem", widget: "image" }
       - label: "Fotos e vídeos da galeria"
         name: "imagens"
         widget: "list"
