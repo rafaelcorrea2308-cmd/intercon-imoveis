@@ -38,7 +38,6 @@ return `
 <div class="photo-wrap">
 <img src="${thumb}" alt="Foto da casa em ${p.bairro}" loading="lazy">
 <span class="badge-pill">${p.finalidade || 'Aluguel'}</span>
-<button class="heart-btn" type="button" aria-label="Favoritar" onclick="event.preventDefault();this.classList.toggle('active')">${ICONS.heart}</button>
 </div>
 <div class="card-body">
 <div class="card-price">${formatBRL(p.preco)}<span> /mês</span></div>
