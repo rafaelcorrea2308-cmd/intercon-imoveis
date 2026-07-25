@@ -30,6 +30,20 @@
       return 'R$ ' + n.toLocaleString('pt-BR');
     }
 
+function orderMidias(lista) {
+  if (!Array.isArray(lista) || lista.length < 2) return lista || [];
+  if (!lista[0] || lista[0].tipo !== 'video') return lista;
+  var idx = -1;
+  for (var i = 1; i < lista.length; i++) {
+    if (lista[i] && lista[i].tipo !== 'video') { idx = i; break; }
+  }
+  if (idx === -1) return lista;
+  var arr = lista.slice();
+  var item = arr.splice(idx, 1)[0];
+  arr.unshift(item);
+  return arr;
+}
+
     var COLORS = {
       red: '#C81B2E',
       redDark: '#8F0F1E',
@@ -71,6 +85,7 @@
             if (src) fotos.push({ tipo: itemTipo, src: src });
           });
         }
+        fotos = orderMidias(fotos);
 
         var specs = [];
         if (quartos) specs.push(quartos + ' quarto' + (quartos == 1 ? '' : 's'));
