@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: rafaelcorrea2308-cmd/intercon-imoveis
+  branch: main
+
+media_folder: "assets/anuncios"
+public_folder: "assets/anuncios"
+
+collections:
+  - name: "imoveis"
+    label: "Imóveis"
+    label_singular: "Imóvel"
+    files:
+      - name: "lista"
+        label: "Lista de Imóveis"
+        file: "properties.json"
+        fields:
+          - label: "Imóveis"
+            name: "imoveis"
+            widget: "list"
+            summary: "{{titulo}} — {{bairro}}"
+            fields:
+              - { label: "ID (número único, não repetir)", name: "id", widget: "string" }
+              - { label: "Título do anúncio", name: "titulo", widget: "string" }
+              - { label: "Bairro", name: "bairro", widget: "string" }
+              - { label: "Cidade", name: "cidade", widget: "string", default: "Campo Grande - MS" }
+              - label: "Finalidade"
+                name: "finalidade"
+                widget: "select"
+                options: ["Aluguel", "Venda"]
+                default: "Aluguel"
+              - label: "Tipo de imóvel"
+                name: "tipo"
+                widget: "select"
+                options: ["Casa", "Apartamento", "Terreno", "Sala Comercial", "Chácara"]
+                default: "Casa"
+              - { label: "Preço (R$)", name: "preco", widget: "number", value_type: "int" }
+              - { label: "Quartos", name: "quartos", widget: "number", value_type: "int" }
+              - { label: "Banheiros", name: "banheiros", widget: "number", value_type: "int" }
+              - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int" }
+              - { label: "Área (m²)", name: "area", widget: "number", value_type: "int" }
+              - { label: "Descrição", name: "descricao", widget: "text" }
+              - { label: "Foto de capa", name: "imagem", widget: "image" }
+              - label: "Fotos e vídeos da galeria"
+                name: "imagens"
+                widget: "list"
+                required: false
+                fields:
+                  - label: "Tipo"
+                    name: "tipo"
+                    widget: "select"
+                    options: ["imagem", "video"]
+                    default: "imagem"
+                  - { label: "Arquivo", name: "src", widget: "file" }
+              - { label: "Link do Google Maps (para embed)", name: "mapaEmbedUrl", widget: "string", required: false }
+              - { label: "Link do Google Maps (normal)", name: "mapaLink", widget: "string", required: false }
+              - { label: "WhatsApp (com DDI 55 + DDD, só números)", name: "whatsapp", widget: "string" }
+              - { label: "Disponível (desmarque quando alugar/vender)", name: "disponivel", widget: "boolean", default: true }
