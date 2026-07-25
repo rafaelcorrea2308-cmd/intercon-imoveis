@@ -32,10 +32,11 @@ return partes.length > 1 ? partes[1].trim() : '';
 }
 
 function cardTemplate(p) {
+    const thumb = (Array.isArray(p.imagens) && p.imagens.length && p.imagens[0].tipo === 'imagem') ? p.imagens[0].src : p.imagem;
 return `
 <a class="card" href="imovel.html?id=${p.id}">
 <div class="photo-wrap">
-<img src="${p.imagem}" alt="Foto da casa em ${p.bairro}" loading="lazy">
+<img src="${thumb}" alt="Foto da casa em ${p.bairro}" loading="lazy">
 <span class="badge-pill">${p.finalidade || 'Aluguel'}</span>
 <button class="heart-btn" type="button" aria-label="Favoritar" onclick="event.preventDefault();this.classList.toggle('active')">${ICONS.heart}</button>
 </div>
