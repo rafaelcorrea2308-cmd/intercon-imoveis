@@ -196,6 +196,7 @@ document.getElementById('grid').innerHTML =
 function mediaSlide(item, alt) {
   if (item.tipo === 'video') {
                 return `<div class="slide"><video src="${item.src}" controls playsinline></video></div>`;
+  }
       
   return `<div class="slide"><img src="${item.src}" alt="${alt}" loading="lazy"></div>`;
 }
