@@ -192,6 +192,59 @@ document.getElementById('grid').innerHTML =
 }
 }
 
+function mediaSlide(item, alt) {
+  if (item.tipo === 'video') {
+    return `<div class="slide"><video src="${item.src}" controls playsinline></video></div>`;
+  }
+  return `<div class="slide"><img src="${item.src}" alt="${alt}" loading="lazy"></div>`;
+}
+
+function galleryTemplate(p) {
+  const midias = Array.isArray(p.imagens) && p.imagens.length
+    ? p.imagens
+    : [{ tipo: 'imagem', src: p.imagem }];
+  const slides = midias.map(m => mediaSlide(m, `Foto da casa em ${p.bairro}`)).join('');
+  const dots = midias.map((_, i) =>
+    `<button class="carousel-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Ir para item ${i + 1}"></button>`
+  ).join('');
+
+  return `
+    <div class="gallery carousel" id="carousel">
+      <div class="carousel-track">${slides}</div>
+      ${midias.length > 1 ? `
+        <button class="carousel-arrow prev" type="button" aria-label="Anterior">&#10094;</button>
+        <button class="carousel-arrow next" type="button" aria-label="Próxima">&#10095;</button>
+        <div class="carousel-dots">${dots}</div>` : ''}
+      <span class="badge-pill">${p.finalidade || 'Aluguel'}</span>
+    </div>`;
+}
+
+function initCarousel() {
+  const root = document.getElementById('carousel');
+  if (!root) return;
+  const track = root.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const dots = Array.from(root.querySelectorAll('.carousel-dot'));
+  let index = 0;
+
+  function goTo(i) {
+    index = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d, di) => d.classList.toggle('active', di === index));
+  }
+
+  root.querySelector('.carousel-arrow.prev')?.addEventListener('click', () => goTo(index - 1));
+  root.querySelector('.carousel-arrow.next')?.addEventListener('click', () => goTo(index + 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(Number(d.dataset.index))));
+
+  let startX = 0;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? index - 1 : index + 1);
+  }, { passive: true });
+}
+
 async function initDetailPage() {
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
@@ -212,10 +265,7 @@ if (crumbTitle) crumbTitle.textContent = p.titulo;
 
 container.innerHTML = `
 <div>
-<div class="gallery">
-<img src="${p.imagem}" alt="Foto da casa em ${p.bairro}">
-<span class="badge-pill">${p.finalidade || 'Aluguel'}</span>
-</div>
+${galleryTemplate(p)}
 <div class="detail-title-block">
 <div class="address-line">${ICONS.pin}${p.bairro} · ${p.cidade}</div>
 <h1>${p.titulo}</h1>
@@ -245,6 +295,7 @@ container.innerHTML = `
 </div>
 </div>
 `;
+initCarousel();
 } catch (e) {
 container.innerHTML = `<div class="empty-state">Não foi possível carregar este imóvel. Publique o site (veja o README) para testar corretamente.</div>`;
 }
