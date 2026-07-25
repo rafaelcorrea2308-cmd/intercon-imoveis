@@ -31,7 +31,8 @@
       "titulo": "Casa no Jardim dos Estados teste",
       "id": "1",
       "mapaEmbedUrl": "https://www.google.com/maps?q=-20.43826,-54.6050715&output=embed",
-      "mapaLink": "https://www.google.com/maps?q=-20.43826,-54.6050715"
+      "mapaLink": "https://www.google.com/maps?q=-20.43826,-54.6050715",
+      "endereco": "-20.43826,-54.6050715"
     },
     {
       "quartos": 3,
