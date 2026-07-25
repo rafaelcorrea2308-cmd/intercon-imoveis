@@ -537,7 +537,11 @@ animation: wa-float-pulse 1.8s ease-in-out infinite;
 
 /* Bloco de localizacao (mapa) na pagina do anuncio */
 .location-block { margin-top: 20px; }
-.location-block h3 { font-size: 15px; margin-bottom: 8px; }
+.location-block h3 { font-size: 15px; margin: 0; }
+.location-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.location-address { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-soft); }
+.location-address svg { width: 13px; height: 13px; flex-shrink: 0; fill: var(--ink-soft); }
+@media (max-width: 480px) { .location-head { flex-direction: column; align-items: flex-start; } }
 .map-thumb-wrap { position: relative; border-radius: var(--radius); overflow: hidden; height: 220px; border: 1px solid var(--line); background: var(--surface); }
 .map-thumb-wrap iframe { width: 100%; height: 100%; border: 0; display: block; pointer-events: none; }
 .map-thumb-link { position: absolute; inset: 0; }
