@@ -30,9 +30,24 @@ const partes = (cidade || '').split(' - ');
 return partes.length > 1 ? partes[1].trim() : '';
 }
 
+function orderMidias(lista) {
+    if (!Array.isArray(lista) || lista.length < 2) return lista || [];
+    if (!lista[0] || lista[0].tipo !== 'video') return lista;
+    let idx = -1;
+    for (let i = 1; i < lista.length; i++) {
+        if (lista[i] && lista[i].tipo !== 'video') { idx = i; break; }
+    }
+    if (idx === -1) return lista;
+    const arr = lista.slice();
+    const item = arr.splice(idx, 1)[0];
+    arr.unshift(item);
+    return arr;
+}
+
 function cardTemplate(p) {
-    const thumb = (Array.isArray(p.imagens) && p.imagens.length && p.imagens[0].tipo === 'imagem') ? p.imagens[0].src : p.imagem;
-return `
+    const midiasOrdenadas = orderMidias(p.imagens);
+    const thumb = (Array.isArray(midiasOrdenadas) && midiasOrdenadas.length && midiasOrdenadas[0].tipo !== 'video') ? midiasOrdenadas[0].src : p.imagem;
+        return `
 <a class="card" href="imovel.html?id=${p.id}">
 <div class="photo-wrap">
 <img src="${thumb}" alt="Foto da casa em ${p.bairro}" loading="lazy">
@@ -200,9 +215,10 @@ function mediaSlide(item, alt) {
 }
 
 function galleryTemplate(p) {
-  const midias = Array.isArray(p.imagens) && p.imagens.length
+      const base = Array.isArray(p.imagens) && p.imagens.length
     ? p.imagens
     : [{ tipo: 'imagem', src: p.imagem }];
+    const midias = orderMidias(base);
   const slides = midias.map(m => mediaSlide(m, `Foto da casa em ${p.bairro}`)).join('');
   const dots = midias.map((_, i) =>
     `<button class="carousel-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Ir para item ${i + 1}"></button>`
