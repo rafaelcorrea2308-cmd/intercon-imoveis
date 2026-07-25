@@ -2,6 +2,8 @@ backend:
   name: github
   repo: rafaelcorrea2308-cmd/intercon-imoveis
   branch: main
+  base_url: https://intercon-oauth.rafaelcorrea2308.workers.dev
+  auth_endpoint: auth
 
 media_folder: "assets/anuncios"
 public_folder: "assets/anuncios"
