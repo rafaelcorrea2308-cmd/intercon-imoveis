@@ -54,7 +54,6 @@ collections:
                     options: ["imagem", "video"]
                     default: "imagem"
                   - { label: "Arquivo", name: "src", widget: "file" }
-              - { label: "Link do Google Maps (para embed)", name: "mapaEmbedUrl", widget: "string", required: false }
-              - { label: "Link do Google Maps (normal)", name: "mapaLink", widget: "string", required: false }
+              - { label: "Endereço completo (rua, número, bairro, cidade)", name: "endereco", widget: "string", required: false, hint: "Digite o endereço completo. O mapa é gerado automaticamente." }
               - { label: "WhatsApp (com DDI 55 + DDD, só números)", name: "whatsapp", widget: "string" }
               - { label: "Disponível (desmarque quando alugar/vender)", name: "disponivel", widget: "boolean", default: true }
