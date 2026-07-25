@@ -14,6 +14,8 @@ collections:
     label_singular: "Imóvel"
     folder: "content/imoveis"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{id}}"
     identifier_field: "titulo"
     summary: "{{titulo}} — {{bairro}} ({{finalidade}})"
