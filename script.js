@@ -304,22 +304,24 @@ function initCarousel() {
   }, { passive: true });
 }
 function locationTemplate(p) {
-  if (!p.mapaEmbedUrl) return '';
-  const endereco = [p.bairro, p.cidade].filter(Boolean).join(' · ');
-  return `
-  <div class="location-block">
-  <div class="location-head">
-  <h3>Localização</h3>
-  ${endereco ? `<div class="location-address"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M172.3 501.7C27 291 0 269.4 0 192 0 86 86 0 192 0s192 86 192 192c0 77.4-27 99-172.3 309.7-9.5 13.8-29.9 13.8-39.4 0z"/></svg><span>${endereco}</span></div>` : ''}
-  </div>
-  <div class="map-thumb-wrap">
-  <iframe src="${p.mapaEmbedUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
-  <a class="map-thumb-link" href="${p.mapaLink || p.mapaEmbedUrl}" target="_blank" rel="noopener" aria-label="Ver localização no Google Maps"></a>
-  <span class="map-thumb-badge">Ver no Google Maps</span>
-  </div>
-  </div>`;  
+    const endereco = p.endereco || null;
+    const embedUrl = endereco ? `https://www.google.com/maps?q=${encodeURIComponent(endereco)}&output=embed` : p.mapaEmbedUrl;
+    const mapLink = endereco ? `https://www.google.com/maps?q=${encodeURIComponent(endereco)}` : (p.mapaLink || p.mapaEmbedUrl);
+    if (!embedUrl) return '';
+    const enderecoLabel = [p.bairro, p.cidade].filter(Boolean).join(' · ');
+    return `
+    <div class="location-block">
+    <div class="location-head">
+    <h3>Localização</h3>
+    ${enderecoLabel ? ('<div class="location-address"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M172.3 501.7C27 291 0 269.4 0 192 0 86 86 0 192 0s192 86 192 192c0 77.4-27 99-172.3 309.7-9.5 13.8-29.9 13.8-39.4 0z"/></svg><span>' + enderecoLabel + '</span></div>') : ''}
+    </div>
+    <div class="map-thumb-wrap">
+    <iframe src="${embedUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
+    <a class="map-thumb-link" href="${mapLink}" target="_blank" rel="noopener" aria-label="Ver localização no Google Maps"></a>
+    <span class="map-thumb-badge">Ver no Google Maps</span>
+    </div>
+    </div>`;
 }
-
 async function initDetailPage() {
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
