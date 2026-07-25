@@ -4,12 +4,11 @@
 --ink: #17233B;
 --ink-soft: #5B6B82;
 --line: #E3E8EE;
---blue: #C81B2E;
---blue-dark: #8F0F1E;
---blue-pale: #FBEAEA;
+--red: #C81B2E;
+--red-dark: #8F0F1E;
+--red-pale: #FBEAEA;
 --price: #0F8A5F;
 --badge: #20262E;
---heart: #E0446A;
 --radius: 10px;
 --shadow: 0 1px 2px rgba(23,35,59,0.06), 0 6px 20px rgba(23,35,59,0.06);
 --shadow-hover: 0 4px 10px rgba(23,35,59,0.08), 0 14px 32px rgba(23,35,59,0.12);
@@ -84,7 +83,7 @@ white-space: nowrap;
 
 /* ---------- Hero + search bar ---------- */
 .hero {
-background: linear-gradient(180deg, var(--blue-dark) 0%, var(--blue) 100%);
+background: linear-gradient(180deg, var(--red-dark) 0%, var(--red) 100%);
 padding: 40px 0 84px;
 }
 .hero .eyebrow {
@@ -159,9 +158,9 @@ font-weight: 700;
 font-size: 13px;
 transition: all 0.15s ease;
 }
-.finalidade-tab:hover { color: var(--blue); }
+.finalidade-tab:hover { color: var(--red); }
 .finalidade-tab.active {
-background: var(--blue);
+background: var(--red);
 color: #fff;
 box-shadow: 0 4px 12px rgba(200,27,46,0.28);
 }
@@ -202,7 +201,7 @@ padding-right: 34px;
 }
 .field input:focus, .field select:focus {
 outline: none;
-border-color: var(--blue);
+border-color: var(--red);
 box-shadow: 0 0 0 3px rgba(200,27,46,0.12);
 }
 .btn-search {
@@ -210,7 +209,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 gap: 8px;
-background: var(--blue);
+background: var(--red);
 color: #fff;
 border: none;
 border-radius: 9px;
@@ -222,13 +221,13 @@ transition: background 0.15s ease, transform 0.15s ease;
 min-width: 0;
 }
 .btn-search svg { width: 16px; height: 16px; flex-shrink: 0; }
-.btn-search:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.btn-search:hover { background: var(--red-dark); transform: translateY(-1px); }
 
 .search-extra { margin-top: 14px; }
 .link-toggle {
 background: none;
 border: none;
-color: var(--blue);
+color: var(--red);
 font-weight: 600;
 font-size: 13px;
 padding: 0;
@@ -287,7 +286,7 @@ border: 1px solid var(--line);
 }
 .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
 
-.photo-wrap { position: relative; height: 190px; background: var(--blue-pale); }
+.photo-wrap { position: relative; height: 190px; background: var(--red-pale); }
 .photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .badge-pill {
@@ -337,7 +336,7 @@ padding: 18px 0 4px;
 font-size: 13px;
 color: var(--ink-soft);
 }
-.breadcrumb a:hover { color: var(--blue); }
+.breadcrumb a:hover { color: var(--red); }
 
 .detail-grid {
 display: grid;
@@ -378,7 +377,7 @@ border-top: 1px solid var(--line);
 border-bottom: 1px solid var(--line);
 }
 .detail-spec-row .spec { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink); }
-.detail-spec-row svg { width: 19px; height: 19px; stroke: var(--blue); fill: none; stroke-width: 1.8; }
+.detail-spec-row svg { width: 19px; height: 19px; stroke: var(--red); fill: none; stroke-width: 1.8; }
 
 .descricao-block { margin-top: 20px; }
 .descricao-block h3 { font-size: 15px; margin-bottom: 8px; }
@@ -413,13 +412,13 @@ margin-bottom: 10px;
 .contact-box .btn svg { width: 17px; height: 17px; }
 .btn-wa { background: #1DA851; color: #fff; }
 .btn-wa:hover { background: #178c43; }
-.btn-call { background: var(--blue-pale); color: var(--blue-dark); }
+.btn-call { background: var(--red-pale); color: var(--red-dark); }
 .btn-call:hover { background: #d7e9f8; }
 .contact-box .ref { font-size: 11.5px; color: var(--ink-soft); text-align: center; margin-top: 4px; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-background: var(--blue-dark);
+background: var(--red-dark);
 color: #fff;
 padding: 40px 0 0;
 margin-top: 40px;
@@ -489,7 +488,7 @@ animation: wa-float-pulse 1.8s ease-in-out infinite;
 .wa-float svg { width: 27px; height: 27px; }
 }
 
-:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
 .carousel { position: relative; overflow: hidden; border-radius: 12px; background: #000; }
 .carousel-track { display: flex; transition: transform .35s ease; }
