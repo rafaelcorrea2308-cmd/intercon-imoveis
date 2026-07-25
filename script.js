@@ -304,6 +304,19 @@ function initCarousel() {
     if (Math.abs(diff) > 40) lbGoTo(diff > 0 ? lbIndex - 1 : lbIndex + 1);
   }, { passive: true });
 }
+function locationTemplate(p) {
+  if (!p.mapaEmbedUrl) return '';
+  return `
+    <div class="location-block">
+      <h3>Localização</h3>
+      <div class="map-thumb-wrap">
+        <iframe src="${p.mapaEmbedUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
+        <a class="map-thumb-link" href="${p.mapaLink || p.mapaEmbedUrl}" target="_blank" rel="noopener" aria-label="Ver localização no Google Maps"></a>
+        <span class="map-thumb-badge">Ver no Google Maps</span>
+      </div>
+    </div>`;
+}
+
 
 async function initDetailPage() {
 const params = new URLSearchParams(window.location.search);
@@ -339,6 +352,7 @@ ${galleryTemplate(p)}
 <h3>Descrição</h3>
 <p>${p.descricao}</p>
 </div>
+${locationTemplate(p)}
 </div>
 </div>
 <div>
