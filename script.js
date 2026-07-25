@@ -20,6 +20,11 @@ wa: `<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2a1
 phone: `<svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2z"/></svg>`
 };
 
+// Garante que os vídeos dos anúncios nunca toquem com som, mesmo se o usuário tentar desmutar pelos controles
+document.addEventListener('volumechange', e => {
+      if (e.target.tagName === 'VIDEO') { e.target.muted = true; e.target.volume = 0; }
+}, true);
+
 async function loadProperties() {
 const res = await fetch('properties.json');
 if (!res.ok) throw new Error('Não foi possível carregar properties.json');
@@ -195,8 +200,8 @@ document.getElementById('grid').innerHTML =
 
 function mediaSlide(item, alt) {
   if (item.tipo === 'video') {
-    return `<div class="slide"><video src="${item.src}" controls playsinline></video></div>`;
-  }
+          return `<div class="slide"><video muted src="${item.src}" controls playsinline></video></div>`;
+      
   return `<div class="slide"><img src="${item.src}" alt="${alt}" loading="lazy"></div>`;
 }
 
