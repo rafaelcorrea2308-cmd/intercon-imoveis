@@ -343,7 +343,6 @@ container.innerHTML = `
 <div>
 ${galleryTemplate(p)}
 <div class="detail-title-block">
-<div class="address-line">${ICONS.pin}${p.bairro} · ${p.cidade}</div>
 <h1>${p.titulo}</h1>
 <div class="detail-spec-row">
 <span class="spec">${ICONS.bed}${p.quartos} quartos</span>
