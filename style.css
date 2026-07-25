@@ -243,7 +243,7 @@ gap: 6px;
 @media (max-width: 880px) {
 .search-top-row { flex-direction: column; align-items: stretch; }
 .field-finalidade .finalidade-tabs { display: flex; }
-.finalidade-tab { flex: 1; text-align: center; }
+.finalidade-tab { flex: 1; text-align: center; padding: 9px 6px; font-size: 12px; }
 .search-fields { grid-template-columns: 1fr; }
 .hero h1 { font-size: 27px; }
 .field-keyword { max-width: 100%; }
