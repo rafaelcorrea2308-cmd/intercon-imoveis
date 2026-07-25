@@ -40,7 +40,7 @@ return `
 </div>
 <div class="card-body">
 <div class="card-price">${formatBRL(p.preco)}<span> /mês</span></div>
-<div class="card-address"><strong>${p.bairro}</strong><br>${p.cidade}</div>
+<div class="card-address"><strong>${p.titulo}</strong><br>${p.bairro}, ${p.cidade}</div>
 <div class="spec-row">
 <span class="spec">${ICONS.bed}${p.quartos}</span>
 <span class="spec">${ICONS.bath}${p.banheiros}</span>
