@@ -1,0 +1,39 @@
+name: Build properties.json
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/imoveis/**'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build properties.json
+        run: node scripts/build-properties.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add properties.json
+          if git diff --cached --quiet; then
+            echo "Nada mudou em properties.json"
+          else
+            git commit -m "Auto-build properties.json from content/imoveis"
+            git push
+          fi
