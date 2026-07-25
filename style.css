@@ -302,19 +302,6 @@ text-transform: uppercase;
 padding: 5px 10px;
 border-radius: 6px;
 }
-.heart-btn {
-position: absolute;
-top: 10px; right: 10px;
-width: 32px; height: 32px;
-background: rgba(255,255,255,0.92);
-border: none;
-border-radius: 50%;
-display: flex; align-items: center; justify-content: center;
-box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-}
-.heart-btn svg { width: 16px; height: 16px; stroke: var(--ink-soft); fill: none; stroke-width: 2; }
-.heart-btn.active svg { stroke: var(--heart); fill: var(--heart); }
-
 .card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .card-price { font-size: 21px; font-weight: 800; color: var(--price); }
 .card-price span { font-size: 12px; font-weight: 500; color: var(--ink-soft); }
