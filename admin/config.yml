@@ -27,6 +27,9 @@ collections:
       - label: "Venda"
         field: finalidade
         pattern: "Venda"
+      - label: "Temporada"
+        field: finalidade
+        pattern: "Temporada"
       - label: "Disponível"
         field: disponivel
         pattern: "true"
@@ -44,7 +47,7 @@ collections:
       - label: "Finalidade"
         name: "finalidade"
         widget: "select"
-        options: ["Aluguel", "Venda"]
+        options: ["Aluguel", "Venda", "Temporada"]
         default: "Aluguel"
       - label: "Tipo de imóvel"
         name: "tipo"
