@@ -1,6 +1,9 @@
 // Formata número em Reais
 function formatBRL(n) {
-    return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+    if (n === undefined || n === null || n === '') return null;
+    const num = Number(n);
+    if (!Number.isFinite(num)) return null;
+    return num.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
 }
 
 // Monta link do WhatsApp com mensagem pré-preenchida
@@ -20,46 +23,64 @@ function priceSuffix(p, mode) {
       return mode === 'detail' ? ' por mês' : ' /mês';
 }
 
+// Monta o HTML do bloco de preço, ou um texto alternativo se o preço não foi informado
+function precoHtml(p, mode) {
+      const formatado = formatBRL(p.preco);
+      if (!formatado) return 'Consulte o preço';
+      return `${formatado}<span>${priceSuffix(p, mode)}</span>`;
+}
+
 // Decide quais especificações mostrar no card conforme o tipo do imóvel
+// (campos sem valor informado simplesmente não aparecem)
 function specsForType(p) {
       const tipo = p.tipo || '';
-      if (tipo === 'Terreno') {
-              return [`${ICONS.area}${p.area}m²`];
-      }
+      const specs = [];
+      const temQuartos = p.quartos !== undefined && p.quartos !== null && p.quartos !== '';
+      const temBanheiros = p.banheiros !== undefined && p.banheiros !== null && p.banheiros !== '';
+      const temVagas = p.vagas !== undefined && p.vagas !== null && p.vagas !== '';
+      const temArea = p.area !== undefined && p.area !== null && p.area !== '';
+
+  if (tipo === 'Terreno') {
+              if (temArea) specs.push(`${ICONS.area}${p.area}m²`);
+              return specs;
+  }
       if (tipo === 'Sala Comercial') {
-              return [
-                        `${ICONS.bath}${p.banheiros}`,
-                        `${ICONS.car}${p.vagas}`,
-                        `${ICONS.area}${p.area}m²`
-                      ];
+              if (temBanheiros) specs.push(`${ICONS.bath}${p.banheiros}`);
+              if (temVagas) specs.push(`${ICONS.car}${p.vagas}`);
+              if (temArea) specs.push(`${ICONS.area}${p.area}m²`);
+              return specs;
       }
-      return [
-              `${ICONS.bed}${p.quartos}`,
-              `${ICONS.bath}${p.banheiros}`,
-              `${ICONS.car}${p.vagas}`,
-              `${ICONS.area}${p.area}m²`
-            ];
+      if (temQuartos) specs.push(`${ICONS.bed}${p.quartos}`);
+      if (temBanheiros) specs.push(`${ICONS.bath}${p.banheiros}`);
+      if (temVagas) specs.push(`${ICONS.car}${p.vagas}`);
+      if (temArea) specs.push(`${ICONS.area}${p.area}m²`);
+      return specs;
 }
 
 // Mesma lógica do specsForType, mas com texto por extenso para a página de detalhe
 function detailSpecsForType(p) {
       const tipo = p.tipo || '';
-      if (tipo === 'Terreno') {
-              return [`${ICONS.area}${p.area} m²`];
-      }
+      const specs = [];
+      const temQuartos = p.quartos !== undefined && p.quartos !== null && p.quartos !== '';
+      const temBanheiros = p.banheiros !== undefined && p.banheiros !== null && p.banheiros !== '';
+      const temVagas = p.vagas !== undefined && p.vagas !== null && p.vagas !== '';
+      const temArea = p.area !== undefined && p.area !== null && p.area !== '';
+
+  if (tipo === 'Terreno') {
+              if (temArea) specs.push(`${ICONS.area}${p.area} m²`);
+              return specs;
+  }
       if (tipo === 'Sala Comercial') {
-              return [
-                        `${ICONS.bath}${p.banheiros} banheiros`,
-                        `${ICONS.car}${p.vagas} vagas`,
-                        `${ICONS.area}${p.area} m²`
-                      ];
+              if (temBanheiros) specs.push(`${ICONS.bath}${p.banheiros} banheiros`);
+              if (temVagas) specs.push(`${ICONS.car}${p.vagas} vagas`);
+              if (temArea) specs.push(`${ICONS.area}${p.area} m²`);
+              return specs;
       }
-      return [
-              `${ICONS.bed}${p.quartos} quartos`,
-              `${ICONS.bath}${p.banheiros} banheiros`,
-              `${ICONS.car}${p.vagas} vagas`,
-              `${ICONS.area}${p.area} m²`
-            ];
+      if (temQuartos) specs.push(`${ICONS.bed}${p.quartos} quartos`);
+      if (temBanheiros) specs.push(`${ICONS.bath}${p.banheiros} banheiros`);
+      if (temVagas) specs.push(`${ICONS.car}${p.vagas} vagas`);
+      if (temArea) specs.push(`${ICONS.area}${p.area} m²`);
+      return specs;
 }
 
 const ICONS = {
@@ -101,6 +122,7 @@ function orderMidias(lista) {
 function cardTemplate(p) {
         const midiasOrdenadas = orderMidias(p.imagens);
         const thumb = (Array.isArray(midiasOrdenadas) && midiasOrdenadas.length && midiasOrdenadas[0].tipo !== 'video') ? midiasOrdenadas[0].src : p.imagem;
+        const specs = specsForType(p);
             return `
             <a class="card" href="imovel.html?id=${p.id}">
             <div class="photo-wrap">
@@ -108,11 +130,11 @@ function cardTemplate(p) {
             <span class="badge-pill">${p.finalidade || 'Aluguel'}</span>
             </div>
             <div class="card-body">
-            <div class="card-price">${formatBRL(p.preco)}<span>${priceSuffix(p)}</span></div>
+            <div class="card-price">${precoHtml(p)}</div>
             <div class="card-address"><strong>${p.titulo}</strong><br>${p.bairro}, ${p.cidade}</div>
-            <div class="spec-row">
-            ${specsForType(p).map(s => `<span class="spec">${s}</span>`).join('')}
-            </div>
+            ${specs.length ? `<div class="spec-row">
+            ${specs.map(s => `<span class="spec">${s}</span>`).join('')}
+            </div>` : ''}
             </div>
             </a>
             `;
@@ -409,15 +431,16 @@ try {
 
     const statusClass = p.disponivel === false ? 'status-off' : 'status-on';
     const statusLabel = p.disponivel === false ? 'Indisponível' : 'Disponível';
+    const specs = detailSpecsForType(p);
 
     container.innerHTML = `
     <div>
     ${galleryTemplate(p)}
     <div class="detail-title-block">
     <h1>${p.titulo}</h1>
-    <div class="detail-spec-row">
-    ${detailSpecsForType(p).map(s => `<span class="spec">${s}</span>`).join('')}
-    </div>
+    ${specs.length ? `<div class="detail-spec-row">
+    ${specs.map(s => `<span class="spec">${s}</span>`).join('')}
+    </div>` : ''}
     <div class="descricao-block">
     <h3>Descrição</h3>
     <p>${p.descricao}</p>
@@ -428,7 +451,7 @@ try {
     <div>
     <div class="contact-box">
     <div class="price-row">
-    <div class="price-big">${formatBRL(p.preco)}<span>${priceSuffix(p, 'detail')}</span></div>
+    <div class="price-big">${precoHtml(p, 'detail')}</div>
     <span class="status-pill ${statusClass}">${statusLabel}</span>
     </div>
     <div class="divider"></div>
