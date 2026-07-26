@@ -1,19 +1,12 @@
 {
   "imoveis": [
     {
-      "imagens": [
-        {
-          "tipo": "imagem",
-          "src": "assets/anuncios/1/foto2.jpg"
-        },
-        {
-          "tipo": "imagem",
-          "src": "assets/anuncios/1/foto1.jpg"
-        },
-        {
-          "tipo": "video",
-          "src": "assets/anuncios/1/video1.mp4"
-        }
+      "fotos": [
+        "assets/anuncios/1/foto2.jpg",
+        "assets/anuncios/1/foto1.jpg"
+      ],
+      "videos": [
+        "assets/anuncios/1/video1.mp4"
       ],
       "quartos": 3,
       "cidade": "Campo Grande - MS",
