@@ -21,7 +21,7 @@ collections:
     identifier_field: "titulo"
     media_folder: "/assets/anuncios/{{fields.id}}"
     public_folder: "assets/anuncios/{{fields.id}}"
-    summary: "#{{id}} [{{disponivel | ternary('✓','✕')}}] — {{titulo}} — {{bairro}} ({{finalidade}})"
+    summary: "#{{id}} [{{disponivel | ternary('✓','✕')}}] — ({{finalidade}}) — {{uf}} — {{cidade}} — {{bairro}} — {{titulo}}"
     sortable_fields: ["id", "titulo", "bairro", "preco"]
     view_filters:
       - label: "Aluguel"
