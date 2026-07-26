@@ -82,7 +82,12 @@
         if (this.state.lockedFromStart) return true;
         var value = this.props.value;
         if (!value || !String(value).trim()) return true;
+        var self = this;
         return this.checkId(value).then(function (result) {
+          // Atualiza o estado visual do campo com o resultado desta checagem
+          // final (a mesma que decide se o salvamento é bloqueado), para que
+          // o motivo do bloqueio fique visível na tela em vez de silencioso.
+          self.setState(result);
           if (result.status === 'duplicate') {
             return { error: { message: result.message } };
           }
