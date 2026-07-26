@@ -163,7 +163,7 @@
       "finalidade": "Obras e serviços",
       "whatsapp": "5567992277174",
       "tipo": "Casa",
-      "disponivel": false,
+      "disponivel": true,
       "unidade_temporada": null,
       "banheiros": 1,
       "titulo": "TESTE Obras e serviços",
