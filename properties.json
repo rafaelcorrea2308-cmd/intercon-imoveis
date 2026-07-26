@@ -159,18 +159,18 @@
           "src": "assets/anuncios/foto2.jpeg"
         }
       ],
-      "quartos": 2,
+      "quartos": 0,
       "cidade": "Campo Grande - MS",
       "bairro": "Aroeira",
       "descricao": "casa boa",
       "area": 132,
-      "vagas": 1,
+      "vagas": 0,
       "preco": 1345,
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
-      "tipo": "Casa",
+      "tipo": "Terreno",
       "disponivel": true,
-      "banheiros": 1,
+      "banheiros": 0,
       "titulo": "vamos ver",
       "id": "10"
     }
