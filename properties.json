@@ -11,7 +11,7 @@
       "finalidade": "Temporada",
       "whatsapp": "5567992277174",
       "tipo": "Casa",
-      "disponivel": false,
+      "disponivel": true,
       "unidade_temporada": "dia",
       "banheiros": 5,
       "titulo": "Casa no Monte Castelo",
@@ -19,7 +19,7 @@
       "imagens": [
         {
           "tipo": "imagem",
-          "src": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80"
+          "src": "assets/anuncios/foto2.jpeg"
         }
       ]
     },
