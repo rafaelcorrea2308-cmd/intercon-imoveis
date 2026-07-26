@@ -9,11 +9,11 @@
   "fotos": [
     "assets/anuncios/teste-obras-e-serviços/qr-code.png"
   ],
-  "finalidade": "Obras e serviços",
+  "finalidade": "Aluguel",
   "uf": "MS",
   "whatsapp": "5567992277174",
   "tipo": "Casa",
-  "disponivel": false,
+  "disponivel": true,
   "unidade_temporada": null,
   "banheiros": "",
   "titulo": "TESTE Obras e serviços",
