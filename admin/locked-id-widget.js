@@ -1,173 +1,185 @@
 (function () {
-  function waitForCMS() {
-    if (!window.CMS || !window.h || !window.createClass) {
-      setTimeout(waitForCMS, 50);
-      return;
-    }
+    function waitForCMS() {
+          if (!window.CMS || !window.h || !window.createClass) {
+                  setTimeout(waitForCMS, 50);
+                  return;
+          }
 
-    var h = window.h;
-    var createClass = window.createClass;
+      var h = window.h;
+          var createClass = window.createClass;
 
-    var REPO = 'rafaelcorrea2308-cmd/intercon-imoveis';
-    var BRANCH = 'main';
-    var CONTENT_PATH = 'content/imoveis';
+      var REPO = 'rafaelcorrea2308-cmd/intercon-imoveis';
+          var BRANCH = 'main';
+          var CONTENT_PATH = 'content/imoveis';
 
-    function fetchExistingIds() {
-      var url =
-        'https://api.github.com/repos/' + REPO + '/contents/' + CONTENT_PATH + '?ref=' + BRANCH;
-      return fetch(url, { headers: { Accept: 'application/vnd.github+json' } })
-        .then(function (res) {
-          if (!res.ok) throw new Error('GitHub respondeu ' + res.status);
-          return res.json();
-        })
-        .then(function (list) {
-          return (list || [])
-            .filter(function (item) {
-              return item && item.name && /\.json$/.test(item.name);
-            })
-            .map(function (item) {
-              return item.name.replace(/\.json$/, '');
-            });
-        });
-    }
+      function fetchExistingIds() {
+              var url =
+                        'https://api.github.com/repos/' + REPO + '/contents/' + CONTENT_PATH + '?ref=' + BRANCH;
+              return fetch(url, { headers: { Accept: 'application/vnd.github+json' } })
+                .then(function (res) {
+                            if (!res.ok) throw new Error('GitHub respondeu ' + res.status);
+                            return res.json();
+                })
+                .then(function (list) {
+                            return (list || [])
+                              .filter(function (item) {
+                                              return item && item.name && /\.json$/.test(item.name);
+                              })
+                              .map(function (item) {
+                                              return item.name.replace(/\.json$/, '');
+                              });
+                });
+      }
 
-    var LockedIdControl = createClass({
-      getInitialState: function () {
-        var hadValueAtMount = !!(this.props.value && String(this.props.value).trim());
-        return {
-          lockedFromStart: hadValueAtMount,
-          status: hadValueAtMount ? 'idle' : 'idle',
-          message: ''
-        };
-      },
-      componentWillUnmount: function () {
-        if (this._timer) clearTimeout(this._timer);
-      },
-      checkId: function (value) {
-        return fetchExistingIds()
-          .then(function (ids) {
-            var used = ids.indexOf(String(value).trim()) !== -1;
-            return used
-              ? {
-                  status: 'duplicate',
-                  message: 'Esse ID já está em uso por outro imóvel. Escolha outro número.'
-                }
-              : { status: 'available', message: 'ID disponível.' };
-          })
-          .catch(function () {
-            return {
-              status: 'error',
-              message: 'Não foi possível verificar agora — será checado de novo ao salvar.'
-            };
-          });
-      },
-      handleChange: function (e) {
-        var value = e.target.value;
-        this.props.onChange(value);
-        if (this.state.lockedFromStart) return;
-        var self = this;
-        if (this._timer) clearTimeout(this._timer);
-        if (!value || !String(value).trim()) {
-          this.setState({ status: 'idle', message: '' });
-          return;
-        }
-        this.setState({ status: 'checking', message: 'Verificando disponibilidade...' });
-        this._timer = setTimeout(function () {
-          self.checkId(value).then(function (result) {
-            self.setState(result);
-          });
-        }, 500);
-      },
-      // Validação síncrona, baseada no resultado que já foi calculado
-      // enquanto o usuário digitava (this.state.status/message). Evita
-      // depender de uma nova checagem assíncrona (Promise) no momento do
-      // "Publish", que o painel pode não aguardar corretamente e travar
-      // o salvamento sem nenhum aviso visível.
-      isValid: function () {
-        if (this.state.lockedFromStart) return true;
-        if (this.state.status === 'duplicate') {
-          return { error: { message: this.state.message } };
-        }
-        return true;
-      },
-      render: function () {
-        var value = this.props.value || '';
-        if (this.state.lockedFromStart) {
-          return h(
-            'div',
-            {},
-            h('input', {
-              type: 'text',
-              value: value,
-              disabled: true,
-              readOnly: true,
-              style: {
-                width: '100%',
-                padding: '8px 10px',
-                fontSize: '15px',
-                border: '1px solid #ddd',
-                borderRadius: '4px',
-                background: '#f0f0f0',
-                color: '#666',
-                cursor: 'not-allowed',
-                boxSizing: 'border-box'
+      var LockedIdControl = createClass({
+              getInitialState: function () {
+                        var hadValueAtMount = !!(this.props.value && String(this.props.value).trim());
+                        return {
+                                    lockedFromStart: hadValueAtMount,
+                                    status: 'idle',
+                                    message: ''
+                        };
+              },
+              componentWillUnmount: function () {
+                        if (this._timer) clearTimeout(this._timer);
+              },
+              checkId: function (value) {
+                        return fetchExistingIds()
+                          .then(function (ids) {
+                                        var used = ids.indexOf(String(value).trim()) !== -1;
+                                        return used
+                                          ? {
+                                                              status: 'duplicate',
+                                                              message: 'Esse ID já está em uso por outro imóvel. Escolha outro número.'
+                                          }
+                                                        : { status: 'available', message: 'ID disponível.' };
+                          })
+                          .catch(function () {
+                                        return {
+                                                        status: 'error',
+                                                        message: 'Não foi possível verificar agora — será checado de novo ao salvar.'
+                                        };
+                          });
+              },
+              handleChange: function (e) {
+                        var value = e.target.value;
+                        this.props.onChange(value);
+                        if (this.state.lockedFromStart) return;
+                        var self = this;
+                        if (this._timer) clearTimeout(this._timer);
+                        if (!value || !String(value).trim()) {
+                                    this.setState({ status: 'idle', message: '' });
+                                    return;
+                        }
+                        this.setState({ status: 'checking', message: 'Verificando disponibilidade...' });
+                        this._timer = setTimeout(function () {
+                                    self.checkId(value).then(function (result) {
+                                                  self.setState(result);
+                                    });
+                        }, 500);
+              },
+              // Validação síncrona (não depende de Promise no momento do Publish).
+              // Bloqueia quando já sabemos que o ID está duplicado, e também quando
+              // a checagem ainda está em andamento (status "checking") — nesse caso
+              // pedimos para aguardar meio segundo e tentar de novo, em vez de
+              // deixar passar um ID que ainda não terminou de ser verificado.
+              // Mantém o comportamento já documentado de PERMITIR o salvamento se a
+              // checagem falhou por erro de rede/API (status "error"), já que nesse
+              // caso o build no GitHub Actions continua sendo a validação definitiva.
+              isValid: function () {
+                        if (this.state.lockedFromStart) return true;
+                        var value = this.props.value;
+                        if (!value || !String(value).trim()) return true;
+                        if (this.state.status === 'duplicate') {
+                                    return { error: { message: this.state.message } };
+                        }
+                        if (this.state.status === 'checking') {
+                                    return {
+                                                  error: {
+                                                                  message: 'Aguarde a verificação de duplicidade terminar (menos de 1 segundo) e tente publicar de novo.'
+                                                  }
+                                    };
+                        }
+                        return true;
+              },
+              render: function () {
+                        var value = this.props.value || '';
+                        if (this.state.lockedFromStart) {
+                                    return h(
+                                                  'div',
+                                      {},
+                                                  h('input', {
+                                                                  type: 'text',
+                                                                  value: value,
+                                                                  disabled: true,
+                                                                  readOnly: true,
+                                                                  style: {
+                                                                                    width: '100%',
+                                                                                    padding: '8px 10px',
+                                                                                    fontSize: '15px',
+                                                                                    border: '1px solid #ddd',
+                                                                                    borderRadius: '4px',
+                                                                                    background: '#f0f0f0',
+                                                                                    color: '#666',
+                                                                                    cursor: 'not-allowed',
+                                                                                    boxSizing: 'border-box'
+                                                                  }
+                                                  }),
+                                                  h(
+                                                                  'p',
+                                                    { style: { margin: '6px 0 0', fontSize: '12px', color: '#888' } },
+                                                                  'Este ID foi definido na criação do imóvel e não pode ser alterado pelo painel.'
+                                                                )
+                                                );
+                        }
+                        var status = this.state.status;
+                        var borderColor = '#ccc';
+                        var msgColor = '#888';
+                        if (status === 'duplicate') {
+                                    borderColor = '#C81B2E';
+                                    msgColor = '#C81B2E';
+                        } else if (status === 'available') {
+                                    borderColor = '#1DA851';
+                                    msgColor = '#1DA851';
+                        } else if (status === 'error') {
+                                    msgColor = '#a86b00';
+                        }
+                        return h(
+                                    'div',
+                          {},
+                                    h('input', {
+                                                  type: 'text',
+                                                  value: value,
+                                                  placeholder: 'Número único, ex: 11',
+                                                  onChange: this.handleChange,
+                                                  style: {
+                                                                  width: '100%',
+                                                                  padding: '8px 10px',
+                                                                  fontSize: '15px',
+                                                                  border: '1px solid ' + borderColor,
+                                                                  borderRadius: '4px',
+                                                                  boxSizing: 'border-box'
+                                                  }
+                                    }),
+                                    this.state.message
+                                      ? h(
+                                                        'p',
+                                        { style: { margin: '6px 0 0', fontSize: '12px', color: msgColor } },
+                                                        this.state.message
+                                                      )
+                                      : null
+                                  );
               }
-            }),
-            h(
-              'p',
-              { style: { margin: '6px 0 0', fontSize: '12px', color: '#888' } },
-              'Este ID foi definido na criação do imóvel e não pode ser alterado pelo painel.'
-            )
-          );
-        }
-        var status = this.state.status;
-        var borderColor = '#ccc';
-        var msgColor = '#888';
-        if (status === 'duplicate') {
-          borderColor = '#C81B2E';
-          msgColor = '#C81B2E';
-        } else if (status === 'available') {
-          borderColor = '#1DA851';
-          msgColor = '#1DA851';
-        } else if (status === 'error') {
-          msgColor = '#a86b00';
-        }
-        return h(
-          'div',
-          {},
-          h('input', {
-            type: 'text',
-            value: value,
-            placeholder: 'Número único, ex: 11',
-            onChange: this.handleChange,
-            style: {
-              width: '100%',
-              padding: '8px 10px',
-              fontSize: '15px',
-              border: '1px solid ' + borderColor,
-              borderRadius: '4px',
-              boxSizing: 'border-box'
-            }
-          }),
-          this.state.message
-            ? h(
-                'p',
-                { style: { margin: '6px 0 0', fontSize: '12px', color: msgColor } },
-                this.state.message
-              )
-            : null
-        );
-      }
-    });
+      });
 
-    var LockedIdPreview = createClass({
-      render: function () {
-        return h('span', {}, this.props.value || '');
-      }
-    });
+      var LockedIdPreview = createClass({
+              render: function () {
+                        return h('span', {}, this.props.value || '');
+              }
+      });
 
-    window.CMS.registerWidget('lockedid', LockedIdControl, LockedIdPreview);
-  }
+      window.CMS.registerWidget('lockedid', LockedIdControl, LockedIdPreview);
+    }
 
-  waitForCMS();
+   waitForCMS();
 })();
