@@ -19,7 +19,7 @@ collections:
     format: "json"
     slug: "{{id}}"
     identifier_field: "titulo"
-    media_folder: "assets/anuncios/{{fields.id}}"
+    media_folder: "/assets/anuncios/{{fields.id}}"
     public_folder: "assets/anuncios/{{fields.id}}"
     summary: "#{{id}} [{{disponivel | ternary('✓','✕')}}] — {{titulo}} — {{bairro}} ({{finalidade}})"
     sortable_fields: ["id", "titulo", "bairro", "preco"]
