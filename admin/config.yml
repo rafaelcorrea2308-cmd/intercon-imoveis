@@ -57,7 +57,7 @@ collections:
         options: ["Casa", "Apartamento", "Terreno", "Sala Comercial", "Chácara"]
         default: "Casa"
       - { label: "Preço (R$)", name: "preco", widget: "number", value_type: "int" }
-              - { label: "Unidade de preço (somente para Temporada)", name: "unidade_temporada", widget: "select", options: ["dia", "semana", "mês", "hóspede"], default: "dia", required: false, hint: "Usado apenas quando a finalidade for Temporada. Aluguel é sempre por mês e Venda é valor total." }
+      - { label: "Unidade de preço (somente para Temporada)", name: "unidade_temporada", widget: "select", options: ["dia", "semana", "mês", "hóspede"], default: "dia", required: false, hint: "Usado apenas quando a finalidade for Temporada. Aluguel é sempre por mês e Venda é valor total." }
       - { label: "Quartos", name: "quartos", widget: "number", value_type: "int" }
       - { label: "Banheiros", name: "banheiros", widget: "number", value_type: "int" }
       - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int" }
