@@ -72,6 +72,8 @@ function orderMidias(lista) {
         var getAsset = this.props.getAsset;
         var data = entry.get('data');
 
+        var id = data.get('id');
+        var disponivel = data.get('disponivel');
         var titulo = data.get('titulo');
         var bairro = data.get('bairro');
         var cidade = data.get('cidade');
@@ -107,9 +109,25 @@ function orderMidias(lista) {
         return h('div', { style: { fontFamily: "'Inter', system-ui, sans-serif", background: COLORS.bg, minHeight: '100%', padding: '24px' } },
           h('div', { style: { background: COLORS.surface, border: '1px solid ' + COLORS.line, borderRadius: '10px', padding: '24px', maxWidth: '720px', margin: '0 auto' } },
 
-            h('div', { style: { display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '12px' } },
-              h('span', { style: { display: 'inline-block', background: COLORS.red, color: '#fff', padding: '4px 12px', borderRadius: '999px', fontSize: '12px', fontWeight: '700', letterSpacing: '0.02em', textTransform: 'uppercase' } }, finalidade || 'Finalidade'),
-              tipo ? h('span', { style: { display: 'inline-block', background: COLORS.bg, color: COLORS.inkSoft, padding: '4px 12px', borderRadius: '999px', fontSize: '12px', fontWeight: '600', border: '1px solid ' + COLORS.line } }, tipo) : null
+            h('div', { style: { display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' } },
+              h('div', { style: { display: 'flex', gap: '8px', alignItems: 'center' } },
+                h('span', { style: { display: 'inline-block', background: COLORS.red, color: '#fff', padding: '4px 12px', borderRadius: '999px', fontSize: '12px', fontWeight: '700', letterSpacing: '0.02em', textTransform: 'uppercase' } }, finalidade || 'Finalidade'),
+                tipo ? h('span', { style: { display: 'inline-block', background: COLORS.bg, color: COLORS.inkSoft, padding: '4px 12px', borderRadius: '999px', fontSize: '12px', fontWeight: '600', border: '1px solid ' + COLORS.line } }, tipo) : null
+              ),
+              h('div', { style: { display: 'flex', gap: '8px', alignItems: 'center' } },
+                id ? h('span', { style: { fontSize: '13px', fontWeight: '700', color: COLORS.inkSoft } }, '#' + id) : null,
+                h('span', {
+                  style: {
+                    display: 'inline-block',
+                    padding: '4px 12px',
+                    borderRadius: '999px',
+                    fontSize: '12px',
+                    fontWeight: '700',
+                    color: '#fff',
+                    background: disponivel === false ? COLORS.red : '#1DA851'
+                  }
+                }, disponivel === false ? 'Indisponível' : 'Disponível')
+              )
             ),
 
             h('h1', { style: { margin: '4px 0 6px', fontSize: '26px', fontWeight: '800', letterSpacing: '-0.02em', color: COLORS.ink } }, titulo || '(sem título)'),
