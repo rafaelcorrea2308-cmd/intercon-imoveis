@@ -42,6 +42,7 @@ collections:
         field: bairro
     fields:
       - { label: "ID (número único, definido na criação — não pode ser alterado depois)", name: "id", widget: "lockedid" }
+      - { label: "Disponível (desmarque quando alugar/vender)", name: "disponivel", widget: "boolean", default: true }
       - { label: "Título do anúncio", name: "titulo", widget: "string" }
       - { label: "Bairro", name: "bairro", widget: "string" }
       - { label: "Cidade", name: "cidade", widget: "string", default: "Campo Grande - MS" }
@@ -78,4 +79,3 @@ collections:
         summary: "{{fields.src}}"
       - { label: "Endereço completo (rua, número, bairro, cidade)", name: "endereco", widget: "string", required: false, hint: "Digite o endereço completo. O mapa é gerado automaticamente." }
       - { label: "WhatsApp (com DDI 55 + DDD, só números)", name: "whatsapp", widget: "string" }
-      - { label: "Disponível (desmarque quando alugar/vender)", name: "disponivel", widget: "boolean", default: true }
