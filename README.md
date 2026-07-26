@@ -1,95 +1,56 @@
-# Intercon Consultoria Imobiliária — Guia rápido (sem programação)
+# Intercon Imóveis
 
-Este site tem 3 partes:
+Sistema de catálogo imobiliário publicado com GitHub Pages, administrado pelo Decap CMS.
 
-- `index.html` — página inicial com todas as casas
-- `imovel.html` — página de detalhe (é o link que vai no QR code de cada placa)
-- `properties.json` — a "lista de casas". É o ÚNICO arquivo que você precisa editar para adicionar, remover ou atualizar um imóvel.
-
-Você não precisa entender código. Só precisa saber editar um arquivo de texto e arrastar uma pasta num site.
-
----
-
-## Passo 1 — Publicar o site de graça (Netlify)
-
-1. Acesse **https://app.netlify.com/drop**
-2. Arraste a pasta inteira `imobiliaria-site` (essa que eu criei) para a área de upload
-3. Em alguns segundos o Netlify te dá um link tipo `https://intercon-imoveis-123.netlify.app`
-4. Pronto — o site já está no ar, de graça, para sempre (sem cartão de crédito)
-
-Depois, se quiser um endereço com o nome de vocês (ex: `correaimoveis.com.br`), dá pra comprar um domínio e apontar pro Netlify — isso eu te ajudo depois se quiser.
-
-> Alternativas igualmente gratuitas: Vercel (vercel.com) ou GitHub Pages. O Netlify é o mais simples por arrastar-e-soltar.
-
----
-
-## Passo 2 — Adicionar ou editar uma casa
-
-Abra o arquivo `properties.json` em qualquer editor de texto (até o Bloco de Notas funciona, mas o **Notepad++** ou **VS Code** deixam mais fácil de não errar vírgula).
-
-Cada casa é um bloco assim:
-
-```json
-{
-  "id": "7",
-  "titulo": "Casa no Bairro X",
-  "bairro": "Bairro X",
-  "cidade": "Campo Grande - MS",
-  "preco": 1500,
-  "quartos": 3,
-  "banheiros": 2,
-  "vagas": 1,
-  "area": 120,
-  "descricao": "Descreva a casa aqui.",
-  "imagem": "https://link-da-foto.com/foto.jpg",
-  "whatsapp": "5567998806767",
-  "disponivel": true
-}
-```
-
-Regras simples:
-- **`id`**: um número único que não se repete entre as casas (ele forma o link da página)
-- **`disponivel`**: mude para `false` quando a casa for alugada — ela some do site automaticamente, mas o link continua existindo (útil caso alguém escaneie uma placa antiga)
-- Para adicionar uma casa nova, copie um bloco inteiro (entre `{` e `}`), cole depois do último, e separe os blocos com vírgula
-- **`imagem`**: pode ser um link de foto (ex: hospedada no Google Fotos/Imgur) — depois te mostro como trocar por fotos reais das casas
-- Depois de editar, salve o arquivo e arraste a pasta de novo no Netlify Drop (ou, se preferir, eu te mostro como conectar com o Github para atualizar automaticamente sem precisar arrastar toda vez)
-
----
-
-## Passo 3 — Pegar o link de cada casa
-
-Depois de publicado, o link de cada imóvel é:
+## Arquitetura
 
 ```
-https://SEU-SITE.netlify.app/imovel.html?id=NUMERO_DA_CASA
+content/imoveis/*.json  ->  GitHub Actions (build-properties.js)  ->  properties.json  ->  GitHub Pages
 ```
 
-Exemplo: se o site for `intercon-imoveis-123.netlify.app` e a casa for a de `id: 3`, o link da placa dela é:
+- `index.html` - página inicial com a lista de imóveis
+- `imovel.html` - página de detalhe de cada imóvel (link usado nos QR codes das placas)
+- `content/imoveis/` - um arquivo `.json` por imóvel (fonte de verdade dos dados)
+- `scripts/build-properties.js` - lê os arquivos de `content/imoveis/`, valida os dados e gera `properties.json`
+- `properties.json` - arquivo gerado automaticamente, usado pelo site para montar a lista de imóveis
+- `admin/` - painel Decap CMS para cadastrar e editar imóveis
+- `.github/workflows/` - GitHub Actions que roda o build automaticamente a cada alteração em `content/imoveis/`
+
+**Aviso importante:** não edite `properties.json` manualmente. Qualquer alteração feita direto nele será sobrescrita no próximo build. Para mudar um imóvel, edite o arquivo correspondente em `content/imoveis/` (ou use o painel em `/admin/`).
+
+## Como administrar os imóveis
+
+1. Acesse `/admin/` no site publicado
+2. Faça login com sua conta do GitHub
+3. Abra a coleção Imóveis
+4. Cadastre um novo imóvel ou edite um existente
+5. Salve - o Decap CMS faz o commit automaticamente em `content/imoveis/`
+6. O GitHub Actions gera o novo `properties.json` e o GitHub Pages publica a atualização em poucos minutos
+
+Para tirar um imóvel do ar sem perder o link/QR code, desmarque o campo Disponível em vez de excluir o imóvel.
+
+### Preço conforme a finalidade
+
+- Aluguel - o preço é sempre exibido por mês
+- Venda - o preço é exibido como valor total, sem sufixo
+- Temporada - use o campo Unidade de preço para escolher se o valor é por dia, por semana ou por mês
+
+## Rodando localmente
+
+Como o site usa `fetch('properties.json')`, ele precisa ser servido por um servidor local (não funciona abrindo o `index.html` direto pelo `file://`). Uma forma simples:
 
 ```
-https://intercon-imoveis-123.netlify.app/imovel.html?id=3
+npx serve .
 ```
 
-Esse é o link que vai virar QR code.
+## Gerando o properties.json manualmente
 
----
+```
+node scripts/build-properties.js
+```
 
-## Passo 4 — Gerar o QR code da placa
+O script valida os imóveis (id único, título, bairro, cidade, finalidade, tipo, preço, disponibilidade, WhatsApp) antes de gerar o arquivo. Se algum imóvel estiver com dado inválido, o script mostra os erros encontrados e não gera o `properties.json`.
 
-1. Acesse **https://www.qrcode-monkey.com** (gratuito, sem cadastro)
-2. Cole o link do Passo 3 no campo de URL
-3. Baixe em alta resolução (PNG ou SVG) para imprimir na placa
-4. Repita para cada casa, usando o link correspondente a cada `id`
+## Domínio e QR codes
 
-Como o link do site nunca muda e nunca expira, o QR code também nunca expira — pode imprimir a placa e deixar na casa por quanto tempo precisar.
-
----
-
-## Próximos passos possíveis (quando quiser)
-
-- Trocar as fotos de exemplo pelas fotos reais das casas
-- Domínio próprio (ex: correaimoveis.com.br)
-- Formulário de contato além do WhatsApp
-- Painel para adicionar casas sem editar o `.json` na mão
-
-É só me chamar quando quiser avançar em algum desses pontos.
+O link de cada imóvel é `https://SEU-DOMINIO/imovel.html?id=ID_DO_IMOVEL`. Esse link não muda enquanto o `id` do imóvel não for alterado, então o QR code impresso na placa continua funcionando mesmo que o imóvel fique indisponível temporariamente.
