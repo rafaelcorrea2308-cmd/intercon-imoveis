@@ -151,6 +151,29 @@
           "src": "assets/anuncios/foto2.jpeg"
         }
       ]
+    },
+    {
+      "quartos": 1,
+      "cidade": "Campo Grande - MS",
+      "bairro": "Teste",
+      "descricao": "Imóvel de teste criado para verificação do painel aministrativo. Não é um anúncio real.",
+      "area": 50,
+      "vagas": 0,
+      "preco": 50000,
+      "finalidade": "Obras e serviços",
+      "whatsapp": "5567992277174",
+      "tipo": "Casa",
+      "disponivel": true,
+      "unidade_temporada": null,
+      "banheiros": 1,
+      "titulo": "TESTE Obras e serviços",
+      "id": "8",
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/foto2.jpeg"
+        }
+      ]
     }
   ]
 }
