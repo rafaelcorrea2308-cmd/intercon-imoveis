@@ -43,26 +43,26 @@ collections:
     fields:
       - { label: "ID (número único, definido na criação — não pode ser alterado depois)", name: "id", widget: "lockedid" }
       - { label: "Disponível (desmarque quando alugar/vender)", name: "disponivel", widget: "boolean", default: true }
-      - { label: "Título do anúncio", name: "titulo", widget: "string" }
-      - { label: "Bairro", name: "bairro", widget: "string" }
-      - { label: "Cidade", name: "cidade", widget: "string", default: "Campo Grande", hint: "Digite apenas o nome da cidade, sem o estado (o estado é selecionado no campo UF logo abaixo)." }
       - label: "UF (estado)"
         name: "uf"
         widget: "select"
         options: ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
         default: "MS"
+      - { label: "Cidade", name: "cidade", widget: "string", default: "Campo Grande", hint: "Digite apenas o nome da cidade, sem o estado (o estado é selecionado no campo UF acima)." }
+      - { label: "Bairro", name: "bairro", widget: "string" }
+      - { label: "Título do anúncio", name: "titulo", widget: "string" }
       - label: "Finalidade"
         name: "finalidade"
         widget: "select"
         options: ["Aluguel", "Venda", "Temporada"]
         default: "Aluguel"
+      - { label: "Unidade de preço (somente para Temporada)", name: "unidade_temporada", widget: "select", options: ["dia", "semana", "mês", "hóspede"], default: "dia", required: false, hint: "Usado apenas quando a finalidade for Temporada. Aluguel é sempre por mês e Venda é valor total." }
       - label: "Tipo de imóvel"
         name: "tipo"
         widget: "select"
         options: ["Casa", "Apartamento", "Terreno", "Sala Comercial", "Chácara"]
         default: "Casa"
       - { label: "Preço (R$)", name: "preco", widget: "number", value_type: "int" }
-      - { label: "Unidade de preço (somente para Temporada)", name: "unidade_temporada", widget: "select", options: ["dia", "semana", "mês", "hóspede"], default: "dia", required: false, hint: "Usado apenas quando a finalidade for Temporada. Aluguel é sempre por mês e Venda é valor total." }
       - { label: "Quartos", name: "quartos", widget: "number", value_type: "int" }
       - { label: "Banheiros", name: "banheiros", widget: "number", value_type: "int" }
       - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int" }
