@@ -6,7 +6,7 @@ const outFile = path.join(__dirname, '..', 'properties.json');
 
 const FINALIDADES_VALIDAS = ['Aluguel', 'Venda', 'Temporada'];
 const TIPOS_VALIDOS = ['Casa', 'Apartamento', 'Terreno', 'Sala Comercial', 'Chácara'];
-const UNIDADES_TEMPORADA_VALIDAS = ['dia', 'semana', 'mês'];
+const UNIDADES_TEMPORADA_VALIDAS = ['dia', 'semana', 'mês', 'hóspede'];
 
 const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
 const erros = [];
