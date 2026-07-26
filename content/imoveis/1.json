@@ -2,6 +2,9 @@
   "cidade": "Campo Grande",
   "bairro": "ssde",
   "descricao": "cexdx",
+  "fotos": [
+    "assets/anuncios/foto2.jpeg"
+  ],
   "finalidade": "Aluguel",
   "uf": "MS",
   "whatsapp": "5567992277174",
