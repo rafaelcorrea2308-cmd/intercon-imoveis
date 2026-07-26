@@ -65,11 +65,11 @@ collections:
         widget: "select"
         options: ["Casa", "Apartamento", "Terreno", "Sala Comercial", "Chácara"]
         default: "Casa"
-      - { label: "Preço (R$)", name: "preco", widget: "number", value_type: "int" }
-      - { label: "Quartos", name: "quartos", widget: "number", value_type: "int" }
-      - { label: "Banheiros", name: "banheiros", widget: "number", value_type: "int" }
-      - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int" }
-      - { label: "Área (m²)", name: "area", widget: "number", value_type: "int" }
+      - { label: "Preço (R$)", name: "preco", widget: "number", value_type: "int", required: false }
+      - { label: "Quartos", name: "quartos", widget: "number", value_type: "int", required: false }
+      - { label: "Banheiros", name: "banheiros", widget: "number", value_type: "int", required: false }
+      - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int", required: false }
+      - { label: "Área (m²)", name: "area", widget: "number", value_type: "int", required: false }
       - { label: "Descrição", name: "descricao", widget: "text" }
       - label: "Fotos"
         name: "fotos"
