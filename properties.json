@@ -129,20 +129,12 @@
       "id": "6"
     },
     {
-      "imagens": [
-        {
-          "tipo": "imagem",
-          "src": "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp"
-        },
-        {
-          "tipo": "imagem",
-          "src": "assets/anuncios/foto2.jpeg"
-        },
-        {
-          "tipo": "imagem",
-          "src": "assets/anuncios/foto2.jpeg"
-        }
+      "fotos": [
+        "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp",
+        "assets/anuncios/foto2.jpeg",
+        "assets/anuncios/foto2.jpeg"
       ],
+      "videos": [],
       "quartos": 0,
       "cidade": "Campo Grande - MS",
       "bairro": "Aroeira",
@@ -153,7 +145,7 @@
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
       "tipo": "Terreno",
-      "disponivel": false,
+      "disponivel": true,
       "banheiros": 0,
       "titulo": "vamos ver",
       "id": "7"
