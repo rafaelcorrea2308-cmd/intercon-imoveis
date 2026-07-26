@@ -4,7 +4,7 @@ const path = require('path');
 const dir = path.join(__dirname, '..', 'content', 'imoveis');
 const outFile = path.join(__dirname, '..', 'properties.json');
 
-const FINALIDADES_VALIDAS = ['Aluguel', 'Venda', 'Temporada'];
+const FINALIDADES_VALIDAS = ['Aluguel', 'Venda', 'Temporada', 'Obras e serviços'];
 const TIPOS_VALIDOS = ['Casa', 'Apartamento', 'Terreno', 'Sala Comercial', 'Chácara'];
 const UNIDADES_TEMPORADA_VALIDAS = ['dia', 'semana', 'mês', 'hóspede'];
 const UFS_VALIDAS = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];
