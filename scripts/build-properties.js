@@ -35,6 +35,11 @@ imoveis.forEach(({ arquivo, dados }) => {
                         idsVistos.add(String(id));
                   }
 
+                  const idEsperado = arquivo.replace(/\.json$/, '');
+                  if (id !== undefined && id !== null && String(id).trim() !== '' && String(id) !== idEsperado) {
+                        erros.push(`${arquivo}: campo "id" ("${id}") não bate com o nome do arquivo ("${idEsperado}"). O id não deve ser alterado depois que o imóvel é criado — se isso foi intencional, renomeie o arquivo para "${id}.json".`);
+                  }
+
                   if (!dados.titulo || !String(dados.titulo).trim()) {
                         erros.push(`${arquivo}: campo "titulo" ausente`);
                   }
