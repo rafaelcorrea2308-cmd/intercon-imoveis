@@ -16,7 +16,9 @@
   "tipo": "Apartamento",
   "disponivel": false,
   "unidade_temporada": "semana",
-  "videos": [],
+  "videos": [
+    "assets/anuncios/video2.mp4"
+  ],
   "banheiros": 4,
   "titulo": "Casa na Coophavila teste edgar",
   "id": "4"
