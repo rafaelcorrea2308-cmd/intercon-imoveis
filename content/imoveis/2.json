@@ -1,6 +1,6 @@
 {
   "quartos": 3,
-  "cidade": "Campo Grande - MS",
+  "cidade": "Campo Grande ",
   "bairro": "Monte Castelo",
   "descricao": "Casa compacta e prática, ótima para casal ou pequena família. Rua tranquila, próxima a comércio e ponto de ônibus.",
   "area": 120,
@@ -10,6 +10,7 @@
     "assets/anuncios/foto2.jpeg"
   ],
   "finalidade": "Temporada",
+  "uf": "MS",
   "whatsapp": "5567992277174",
   "tipo": "Casa",
   "disponivel": true,
