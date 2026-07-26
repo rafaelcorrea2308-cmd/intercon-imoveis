@@ -12,7 +12,7 @@ function whatsappLink(numero, titulo) {
 // Define o sufixo de preço conforme a finalidade do imóvel
 function priceSuffix(p, mode) {
       const finalidade = p.finalidade || 'Aluguel';
-      if (finalidade === 'Venda') return '';
+      if (finalidade === 'Venda' || finalidade === 'Obras e serviços') return '';
       if (finalidade === 'Temporada') {
               const unidade = p.unidade_temporada || 'dia';
               return mode === 'detail' ? ` por ${unidade}` : ` /${unidade}`;
@@ -70,6 +70,7 @@ const ICONS = {
     wa: `<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.4 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.5-.3z"/></svg>`,
     phone: `<svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2z"/></svg>`
 };
+
 
 async function loadProperties() {
     const res = await fetch('properties.json', { cache: 'no-store' });
@@ -260,6 +261,7 @@ function mediaSlide(item, alt) {
       if (item.tipo === 'video') {
                           return `<div class="slide"><video src="${item.src}" controls playsinline></video></div>`;
       }
+
   return `<div class="slide"><img src="${item.src}" alt="${alt}" loading="lazy"></div>`;
 }
 
@@ -272,6 +274,7 @@ function galleryTemplate(p) {
       const dots = midias.map((_, i) =>
               `<button class="carousel-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Ir para item ${i + 1}"></button>`
                                 ).join('');
+
   return `
       <div class="gallery carousel" id="carousel">
             <div class="carousel-track">${slides}</div>
@@ -367,7 +370,6 @@ function initCarousel() {
               if (Math.abs(diff) > 40) lbGoTo(diff > 0 ? lbIndex - 1 : lbIndex + 1);
       }, { passive: true });
 }
-
 function locationTemplate(p) {
         const endereco = p.endereco || null;
         const embedUrl = endereco ? `https://www.google.com/maps?q=${encodeURIComponent(endereco)}&output=embed` : p.mapaEmbedUrl;
@@ -387,7 +389,6 @@ function locationTemplate(p) {
                                                 </div>
                                                     </div>`;
 }
-
 async function initDetailPage() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
