@@ -4,6 +4,7 @@ backend:
   branch: main
   base_url: https://intercon-oauth.rafaelcorrea2308.workers.dev
   auth_endpoint: auth
+  locale: 'pt'
 
 media_folder: "assets/anuncios"
 public_folder: "assets/anuncios"
