@@ -190,9 +190,9 @@ let filtered = all.filter(p => p.disponivel);
     if (bairro) filtered = filtered.filter(p => p.bairro === bairro);
     if (q) {
         filtered = filtered.filter(p =>
-            p.bairro.toLowerCase().includes(q) ||
-            p.cidade.toLowerCase().includes(q) ||
-            p.titulo.toLowerCase().includes(q)
+            (p.bairro || '').toLowerCase().includes(q) ||
+            (p.cidade || '').toLowerCase().includes(q) ||
+            (p.titulo || '').toLowerCase().includes(q)
                                    );
     }
     renderGrid(filtered);
