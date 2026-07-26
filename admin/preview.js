@@ -4,6 +4,7 @@
       setTimeout(waitForCMS, 50);
       return;
     }
+
     var h = window.h;
     var createClass = window.createClass;
 
@@ -71,7 +72,6 @@ function orderMidias(lista) {
         var entry = this.props.entry;
         var getAsset = this.props.getAsset;
         var data = entry.get('data');
-
         var id = data.get('id');
         var disponivel = data.get('disponivel');
         var titulo = data.get('titulo');
@@ -88,18 +88,20 @@ function orderMidias(lista) {
         var descricao = data.get('descricao');
         var endereco = data.get('endereco');
         var whatsapp = data.get('whatsapp');
-        var imagens = data.get('imagens');
-
+        var fotosField = data.get('fotos');
+        var videosField = data.get('videos');
         var fotos = [];
-        if (imagens) {
-          imagens.forEach(function (img) {
-            var itemTipo = img.get('tipo');
-            var src = img.get('src');
-            if (src) fotos.push({ tipo: itemTipo, src: src });
+        if (fotosField) {
+          fotosField.forEach(function (src) {
+            if (src) fotos.push({ tipo: 'imagem', src: src });
+          });
+        }
+        if (videosField) {
+          videosField.forEach(function (src) {
+            if (src) fotos.push({ tipo: 'video', src: src });
           });
         }
         fotos = orderMidias(fotos);
-
         var specs = [];
         if (quartos) specs.push(quartos + ' quarto' + (quartos == 1 ? '' : 's'));
         if (banheiros) specs.push(banheiros + ' banheiro' + (banheiros == 1 ? '' : 's'));
@@ -108,7 +110,6 @@ function orderMidias(lista) {
 
         return h('div', { style: { fontFamily: "'Inter', system-ui, sans-serif", background: COLORS.bg, minHeight: '100%', padding: '24px' } },
           h('div', { style: { background: COLORS.surface, border: '1px solid ' + COLORS.line, borderRadius: '10px', padding: '24px', maxWidth: '720px', margin: '0 auto' } },
-
             h('div', { style: { display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' } },
               h('div', { style: { display: 'flex', gap: '8px', alignItems: 'center' } },
                 h('span', { style: { display: 'inline-block', background: COLORS.red, color: '#fff', padding: '4px 12px', borderRadius: '999px', fontSize: '12px', fontWeight: '700', letterSpacing: '0.02em', textTransform: 'uppercase' } }, finalidade || 'Finalidade'),
@@ -129,15 +130,10 @@ function orderMidias(lista) {
                 }, disponivel === false ? 'Indisponível' : 'Disponível')
               )
             ),
-
             h('h1', { style: { margin: '4px 0 6px', fontSize: '26px', fontWeight: '800', letterSpacing: '-0.02em', color: COLORS.ink } }, titulo || '(sem título)'),
-
             h('p', { style: { margin: '0 0 10px', color: COLORS.inkSoft, fontSize: '15px' } }, [bairro, cidade].filter(Boolean).join(', ')),
-
             preco ? h('p', { style: { margin: '0 0 6px', fontWeight: '800', fontSize: '22px', color: COLORS.price } }, fmtPreco(preco) + priceSuffix(finalidade, unidade_temporada)) : null,
-
             specs.length ? h('p', { style: { margin: '0 0 18px', color: COLORS.inkSoft, fontSize: '13px' } }, specs.join('  •  ')) : null,
-
             fotos.length ? h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '18px' } },
               fotos.map(function (foto, i) {
                 var url = resolveUrl(getAsset, foto.src);
@@ -157,17 +153,14 @@ function orderMidias(lista) {
                 });
               })
             ) : h('p', { style: { color: COLORS.inkSoft, fontSize: '13px', fontStyle: 'italic', marginBottom: '18px' } }, 'Nenhuma foto ou vídeo adicionado ainda.'),
-
             descricao ? h('div', { style: { marginBottom: '16px' } },
               h('h3', { style: { fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.04em', color: COLORS.inkSoft, marginBottom: '6px', fontWeight: '700' } }, 'Descrição'),
               h('p', { style: { margin: 0, fontSize: '14px', lineHeight: '1.5', color: COLORS.ink, whiteSpace: 'pre-wrap' } }, descricao)
             ) : null,
-
             endereco ? h('div', { style: { marginBottom: '16px' } },
               h('h3', { style: { fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.04em', color: COLORS.inkSoft, marginBottom: '6px', fontWeight: '700' } }, 'Endereço'),
               h('p', { style: { margin: 0, fontSize: '14px', color: COLORS.ink } }, endereco)
             ) : null,
-
             whatsapp ? h('div', { style: { marginTop: '18px', paddingTop: '14px', borderTop: '1px solid ' + COLORS.line } },
               h('span', { style: { display: 'inline-block', background: '#1DA851', color: '#fff', padding: '8px 16px', borderRadius: '8px', fontWeight: '700', fontSize: '13px' } }, 'WhatsApp: ' + whatsapp)
             ) : null
