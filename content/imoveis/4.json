@@ -14,7 +14,7 @@
   "finalidade": "Temporada",
   "whatsapp": "5567992277174",
   "tipo": "Apartamento",
-  "disponivel": false,
+  "disponivel": true,
   "unidade_temporada": "semana",
   "videos": [
     "assets/anuncios/video2.mp4"
