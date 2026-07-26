@@ -41,7 +41,7 @@ collections:
       - label: "Bairro"
         field: bairro
     fields:
-      - { label: "ID (número único, não repetir)", name: "id", widget: "string" }
+      - { label: "ID (número único, definido na criação — não pode ser alterado depois)", name: "id", widget: "lockedid" }
       - { label: "Título do anúncio", name: "titulo", widget: "string" }
       - { label: "Bairro", name: "bairro", widget: "string" }
       - { label: "Cidade", name: "cidade", widget: "string", default: "Campo Grande - MS" }
