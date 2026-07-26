@@ -62,19 +62,20 @@ collections:
       - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int" }
       - { label: "Área (m²)", name: "area", widget: "number", value_type: "int" }
       - { label: "Descrição", name: "descricao", widget: "text" }
-      - label: "Fotos e vídeos da galeria"
-        name: "imagens"
+      - label: "Fotos"
+        name: "fotos"
         widget: "list"
-        required: true
-        min: 1
-        hint: "Pelo menos 1 foto ou vídeo é obrigatório."
-        fields:
-          - label: "Tipo"
-            name: "tipo"
-            widget: "select"
-            options: ["imagem", "video"]
-            default: "imagem"
-          - { label: "Arquivo", name: "src", widget: "file" }
+        required: false
+        hint: "Arraste as fotos para esta área ou clique para escolher do computador. É necessário ter pelo menos 1 foto ou vídeo no total (some com o campo Vídeos abaixo)."
+        field: { label: "Foto", name: "src", widget: "image" }
+        summary: "{{fields.src}}"
+      - label: "Vídeos"
+        name: "videos"
+        widget: "list"
+        required: false
+        hint: "Arquivos de vídeo (formato .mp4). Opcional."
+        field: { label: "Vídeo", name: "src", widget: "file" }
+        summary: "{{fields.src}}"
       - { label: "Endereço completo (rua, número, bairro, cidade)", name: "endereco", widget: "string", required: false, hint: "Digite o endereço completo. O mapa é gerado automaticamente." }
       - { label: "WhatsApp (com DDI 55 + DDD, só números)", name: "whatsapp", widget: "string" }
       - { label: "Disponível (desmarque quando alugar/vender)", name: "disponivel", widget: "boolean", default: true }
