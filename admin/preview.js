@@ -30,6 +30,16 @@
       return 'R$ ' + n.toLocaleString('pt-BR');
     }
 
+    function priceSuffix(finalidade, unidade) {
+      var f = finalidade || 'Aluguel';
+      if (f === 'Venda') return '';
+      if (f === 'Temporada') {
+        var u = unidade || 'dia';
+        return ' /' + u;
+      }
+      return ' /mês';
+    }
+
 function orderMidias(lista) {
   if (!Array.isArray(lista) || lista.length < 2) return lista || [];
   if (!lista[0] || lista[0].tipo !== 'video') return lista;
@@ -68,6 +78,7 @@ function orderMidias(lista) {
         var preco = data.get('preco');
         var finalidade = data.get('finalidade');
         var tipo = data.get('tipo');
+        var unidade_temporada = data.get('unidade_temporada');
         var quartos = data.get('quartos');
         var banheiros = data.get('banheiros');
         var vagas = data.get('vagas');
@@ -105,7 +116,7 @@ function orderMidias(lista) {
 
             h('p', { style: { margin: '0 0 10px', color: COLORS.inkSoft, fontSize: '15px' } }, [bairro, cidade].filter(Boolean).join(', ')),
 
-            preco ? h('p', { style: { margin: '0 0 6px', fontWeight: '800', fontSize: '22px', color: COLORS.price } }, fmtPreco(preco)) : null,
+            preco ? h('p', { style: { margin: '0 0 6px', fontWeight: '800', fontSize: '22px', color: COLORS.price } }, fmtPreco(preco) + priceSuffix(finalidade, unidade_temporada)) : null,
 
             specs.length ? h('p', { style: { margin: '0 0 18px', color: COLORS.inkSoft, fontSize: '13px' } }, specs.join('  •  ')) : null,
 
