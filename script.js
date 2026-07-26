@@ -71,7 +71,6 @@ const ICONS = {
     phone: `<svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2z"/></svg>`
 };
 
-
 async function loadProperties() {
     const res = await fetch('properties.json', { cache: 'no-store' });
     if (!res.ok) throw new Error('Não foi possível carregar properties.json');
@@ -261,7 +260,6 @@ function mediaSlide(item, alt) {
       if (item.tipo === 'video') {
                           return `<div class="slide"><video src="${item.src}" controls playsinline></video></div>`;
       }
-
   return `<div class="slide"><img src="${item.src}" alt="${alt}" loading="lazy"></div>`;
 }
 
@@ -274,7 +272,6 @@ function galleryTemplate(p) {
       const dots = midias.map((_, i) =>
               `<button class="carousel-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Ir para item ${i + 1}"></button>`
                                 ).join('');
-
   return `
       <div class="gallery carousel" id="carousel">
             <div class="carousel-track">${slides}</div>
@@ -370,6 +367,7 @@ function initCarousel() {
               if (Math.abs(diff) > 40) lbGoTo(diff > 0 ? lbIndex - 1 : lbIndex + 1);
       }, { passive: true });
 }
+
 function locationTemplate(p) {
         const endereco = p.endereco || null;
         const embedUrl = endereco ? `https://www.google.com/maps?q=${encodeURIComponent(endereco)}&output=embed` : p.mapaEmbedUrl;
@@ -389,6 +387,7 @@ function locationTemplate(p) {
                                                 </div>
                                                     </div>`;
 }
+
 async function initDetailPage() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
@@ -407,6 +406,9 @@ try {
     document.title = `${p.titulo} — Para alugar | InterCon`;
     if (crumbTitle) crumbTitle.textContent = p.titulo;
 
+    const statusClass = p.disponivel === false ? 'status-off' : 'status-on';
+    const statusLabel = p.disponivel === false ? 'Indisponível' : 'Disponível';
+
     container.innerHTML = `
     <div>
     ${galleryTemplate(p)}
@@ -424,7 +426,10 @@ try {
     </div>
     <div>
     <div class="contact-box">
+    <div class="price-row">
     <div class="price-big">${formatBRL(p.preco)}<span>${priceSuffix(p, 'detail')}</span></div>
+    <span class="status-pill ${statusClass}">${statusLabel}</span>
+    </div>
     <div class="divider"></div>
     <div class="agent">
     <img src="logo.svg" alt="InterCon" class="avatar-logo">
