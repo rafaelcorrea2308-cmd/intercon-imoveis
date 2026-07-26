@@ -87,10 +87,6 @@
           "src": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"
         },
         {
-          "tipo": "imagem",
-          "src": "assets/anuncios/whatsapp-image-2026-07-24-at-14.51.19-1-.png"
-        },
-        {
           "tipo": "video",
           "src": "assets/anuncios/video2.mp4"
         }
@@ -160,14 +156,6 @@
         {
           "tipo": "imagem",
           "src": "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp"
-        },
-        {
-          "tipo": "imagem",
-          "src": "assets/anuncios/foto2.jpeg"
-        },
-        {
-          "tipo": "imagem",
-          "src": "assets/anuncios/foto2.jpeg"
         }
       ]
     },
