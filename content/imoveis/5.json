@@ -1,19 +1,20 @@
 {
   "quartos": 3,
-  "cidade": "Campo Grande - MS",
+  "cidade": "Campo Grande ",
   "bairro": "Tiradentes",
   "descricao": "Casa com quintal grande, ideal para quem tem pets ou crianças. Bairro residencial, tranquilo e arborizado.",
   "area": 130,
   "vagas": 2,
   "preco": 1650,
-  "finalidade": "Aluguel",
-  "whatsapp": "5567992277174",
   "fotos": [
     "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80"
   ],
-  "videos": [],
+  "finalidade": "Aluguel",
+  "uf": "MS",
+  "whatsapp": "5567992277174",
   "tipo": "Casa",
   "disponivel": true,
+  "videos": [],
   "banheiros": 2,
   "titulo": "Casa no Tiradentes",
   "id": "5"
