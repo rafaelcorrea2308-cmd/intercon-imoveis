@@ -12,7 +12,7 @@
   "finalidade": "Temporada",
   "whatsapp": "5567992277174",
   "tipo": "Casa",
-  "disponivel": false,
+  "disponivel": true,
   "unidade_temporada": "dia",
   "videos": [],
   "banheiros": 5,
