@@ -4,14 +4,14 @@
       setTimeout(waitForCMS, 50);
       return;
     }
+
     var h = window.h;
     var createClass = window.createClass;
-    // Ajuste aqui se o repositório ou branch mudarem no futuro.
+
     var REPO = 'rafaelcorrea2308-cmd/intercon-imoveis';
     var BRANCH = 'main';
     var CONTENT_PATH = 'content/imoveis';
-    // Busca a lista de ids já usados olhando os nomes dos arquivos
-    // em content/imoveis (cada arquivo é sempre "{id}.json").
+
     function fetchExistingIds() {
       var url =
         'https://api.github.com/repos/' + REPO + '/contents/' + CONTENT_PATH + '?ref=' + BRANCH;
@@ -31,17 +31,6 @@
         });
     }
 
-    // Campo "id": editável apenas ao criar um imóvel novo, com checagem
-    // automática de duplicidade. Depois que o imóvel já existe, o campo
-    // fica travado (somente leitura).
-    //
-    // Importante: o Control de um widget customizado do Decap CMS NÃO
-    // recebe a prop "entry" (isso só existe no Preview), então não dá
-    // pra perguntar diretamente "isso é uma entrada nova?". Em vez disso,
-    // guardamos no momento em que o campo é montado se ele já tinha um
-    // valor preenchido: se já tinha, é um imóvel existente (trava); se
-    // estava vazio, é um imóvel novo (fica editável durante toda a sessão
-    // de criação, mesmo depois que o usuário digitar algo).
     var LockedIdControl = createClass({
       getInitialState: function () {
         var hadValueAtMount = !!(this.props.value && String(this.props.value).trim());
@@ -89,13 +78,10 @@
           });
         }, 500);
       },
-      // Chamado pelo Decap CMS antes de permitir salvar/publicar.
-      // Retornar uma Promise faz o painel esperar o resultado antes
-      // de liberar o salvamento.
       isValid: function () {
         if (this.state.lockedFromStart) return true;
         var value = this.props.value;
-        if (!value || !String(value).trim()) return true; // "required" cuida do campo vazio
+        if (!value || !String(value).trim()) return true;
         return this.checkId(value).then(function (result) {
           if (result.status === 'duplicate') {
             return { error: { message: result.message } };
