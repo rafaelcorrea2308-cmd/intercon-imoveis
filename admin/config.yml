@@ -65,7 +65,9 @@ collections:
       - label: "Fotos e vídeos da galeria"
         name: "imagens"
         widget: "list"
-        required: false
+        required: true
+        min: 1
+        hint: "Pelo menos 1 foto ou vídeo é obrigatório."
         fields:
           - label: "Tipo"
             name: "tipo"
