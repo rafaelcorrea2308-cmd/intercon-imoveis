@@ -12,10 +12,11 @@
   "area": 120,
   "vagas": 2,
   "preco": 4500,
-  "finalidade": "Aluguel",
+  "finalidade": "Temporada",
   "whatsapp": "5567992277174",
   "tipo": "Casa",
-  "disponivel": false,
+  "disponivel": true,
+  "unidade_temporada": "dia",
   "banheiros": 5,
   "titulo": "Casa no Monte Castelo",
   "id": "2"
