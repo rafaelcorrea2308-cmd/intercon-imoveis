@@ -46,24 +46,30 @@
       ]
     },
     {
-      "quartos": 2,
+      "quartos": 6,
       "cidade": "Campo Grande - MS",
-      "bairro": "Coophavila",
+      "bairro": "Coophavila III",
       "descricao": "Casa simples e bem cuidada, ótima localização perto de escolas e mercado. Últimas reformas em 2024.",
-      "area": 75,
-      "vagas": 1,
+      "endereco": "travessa torres 55",
+      "area": 124,
+      "vagas": 2,
       "preco": 1100,
-      "finalidade": "Aluguel",
+      "finalidade": "Temporada",
       "whatsapp": "5567992277174",
       "tipo": "Casa",
       "disponivel": true,
-      "banheiros": 1,
-      "titulo": "Casa na Coophavila",
+      "unidade_temporada": "mês",
+      "banheiros": 4,
+      "titulo": "Casa na Coophavila teste edgar",
       "id": "4",
       "imagens": [
         {
           "tipo": "imagem",
           "src": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/whatsapp-image-2026-07-24-at-14.51.19-1-.png"
         }
       ]
     },
