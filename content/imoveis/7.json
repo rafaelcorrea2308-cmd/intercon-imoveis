@@ -1,21 +1,22 @@
 {
-  "fotos": [
-    "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp",
-    "assets/anuncios/foto2.jpeg",
-    "assets/anuncios/foto2.jpeg"
-  ],
-  "videos": [],
   "quartos": 0,
-  "cidade": "Campo Grande - MS",
+  "cidade": "Campo Grande ",
   "bairro": "Aroeira",
   "descricao": "casa boa",
   "area": 132,
   "vagas": 0,
   "preco": 1345,
+  "fotos": [
+    "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp",
+    "assets/anuncios/foto2.jpeg",
+    "assets/anuncios/foto2.jpeg"
+  ],
   "finalidade": "Aluguel",
+  "uf": "MS",
   "whatsapp": "5567992277174",
   "tipo": "Terreno",
   "disponivel": true,
+  "videos": [],
   "banheiros": 0,
   "titulo": "vamos ver",
   "id": "7"
