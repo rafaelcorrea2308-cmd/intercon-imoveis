@@ -1,19 +1,20 @@
 {
   "quartos": 4,
-  "cidade": "Campo Grande - MS",
+  "cidade": "Campo Grande ",
   "bairro": "Monte Castelo",
   "descricao": "Casa ampla em condomínio fechado, com suíte, escritório e área gourmet. Segurança 24h e área de lazer compartilhada.",
   "area": 210,
   "vagas": 2,
   "preco": 2200,
-  "finalidade": "Aluguel",
-  "whatsapp": "5567992277174",
   "fotos": [
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
   ],
-  "videos": [],
+  "finalidade": "Aluguel",
+  "uf": "MS",
+  "whatsapp": "5567992277174",
   "tipo": "Casa",
   "disponivel": true,
+  "videos": [],
   "banheiros": 3,
   "titulo": "Casa no Monte Castelo",
   "id": "3"
