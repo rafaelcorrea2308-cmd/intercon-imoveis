@@ -19,7 +19,7 @@ collections:
     format: "json"
     slug: "{{id}}"
     identifier_field: "titulo"
-    summary: "{{titulo}} — {{bairro}} ({{finalidade}})"
+    summary: "#{{id}} [{{disponivel | ternary('✓','✕')}}] — {{titulo}} — {{bairro}} ({{finalidade}})"
     sortable_fields: ["id", "titulo", "bairro", "preco"]
     view_filters:
       - label: "Aluguel"
