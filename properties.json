@@ -118,12 +118,10 @@
       "preco": 21669,
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
-      "imagens": [
-        {
-          "tipo": "imagem",
-          "src": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
-        }
+      "fotos": [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
       ],
+      "videos": [],
       "tipo": "Casa",
       "disponivel": true,
       "banheiros": 2,
