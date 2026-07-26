@@ -4,15 +4,85 @@ const path = require('path');
 const dir = path.join(__dirname, '..', 'content', 'imoveis');
 const outFile = path.join(__dirname, '..', 'properties.json');
 
+const FINALIDADES_VALIDAS = ['Aluguel', 'Venda', 'Temporada'];
+const TIPOS_VALIDOS = ['Casa', 'Apartamento', 'Terreno', 'Sala Comercial', 'Chácara'];
+const UNIDADES_TEMPORADA_VALIDAS = ['dia', 'semana', 'mês'];
+
 const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
 
+const erros = [];
+const idsVistos = new Set();
+
 const imoveis = files.map((f) => {
-  const raw = fs.readFileSync(path.join(dir, f), 'utf8');
-  return JSON.parse(raw);
+    let dados;
+    try {
+          dados = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+    } catch (e) {
+          erros.push(`${f}: JSON inválido (${e.message})`);
+          return null;
+    }
+    return { arquivo: f, dados };
+}).filter(Boolean);
+
+imoveis.forEach(({ arquivo, dados }) => {
+    const id = dados.id;
+
+                  if (id === undefined || id === null || String(id).trim() === '') {
+                        erros.push(`${arquivo}: campo "id" ausente`);
+                  } else if (idsVistos.has(String(id))) {
+                        erros.push(`${arquivo}: id "${id}" duplicado`);
+                  } else {
+                        idsVistos.add(String(id));
+                  }
+
+                  if (!dados.titulo || !String(dados.titulo).trim()) {
+                        erros.push(`${arquivo}: campo "titulo" ausente`);
+                  }
+
+                  if (!dados.bairro || !String(dados.bairro).trim()) {
+                        erros.push(`${arquivo}: campo "bairro" ausente`);
+                  }
+
+                  if (!dados.cidade || !String(dados.cidade).trim()) {
+                        erros.push(`${arquivo}: campo "cidade" ausente`);
+                  }
+
+                  const finalidade = dados.finalidade || 'Aluguel';
+    if (!FINALIDADES_VALIDAS.includes(finalidade)) {
+          erros.push(`${arquivo}: finalidade "${finalidade}" inválida (use ${FINALIDADES_VALIDAS.join(', ')})`);
+    }
+
+                  if (dados.tipo && !TIPOS_VALIDOS.includes(dados.tipo)) {
+                        erros.push(`${arquivo}: tipo "${dados.tipo}" inválido (use ${TIPOS_VALIDOS.join(', ')})`);
+                  }
+
+                  if (finalidade === 'Temporada' && dados.unidade_temporada && !UNIDADES_TEMPORADA_VALIDAS.includes(dados.unidade_temporada)) {
+                        erros.push(`${arquivo}: unidade_temporada "${dados.unidade_temporada}" inválida (use ${UNIDADES_TEMPORADA_VALIDAS.join(', ')})`);
+                  }
+
+                  const preco = Number(dados.preco);
+    if (!Number.isFinite(preco) || preco <= 0) {
+          erros.push(`${arquivo}: "preco" precisa ser um número maior que zero`);
+    }
+
+                  if (typeof dados.disponivel !== 'boolean') {
+                        erros.push(`${arquivo}: campo "disponivel" ausente ou não é true/false`);
+                  }
+
+                  if (!dados.whatsapp || !/^\d+$/.test(String(dados.whatsapp))) {
+                        erros.push(`${arquivo}: "whatsapp" ausente ou deve conter só números (com DDI+DDD)`);
+                  }
 });
 
-imoveis.sort((a, b) => Number(a.id) - Number(b.id));
+if (erros.length) {
+    console.error('Foram encontrados problemas nos imóveis. Corrija antes de publicar:\n');
+    erros.forEach((e) => console.error('  - ' + e));
+    process.exit(1);
+}
 
-fs.writeFileSync(outFile, JSON.stringify({ imoveis }, null, 2) + '\n');
+const lista = imoveis.map((i) => i.dados);
+lista.sort((a, b) => Number(a.id) - Number(b.id));
 
-console.log('properties.json gerado com ' + imoveis.length + ' imoveis.');
+fs.writeFileSync(outFile, JSON.stringify({ imoveis: lista }, null, 2) + '\n');
+
+console.log('properties.json gerado com ' + lista.length + ' imoveis.');
