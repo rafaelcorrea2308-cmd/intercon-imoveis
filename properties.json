@@ -133,7 +133,7 @@
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
       "tipo": "Terreno",
-      "disponivel": false,
+      "disponivel": true,
       "banheiros": 0,
       "titulo": "vamos ver",
       "id": "7",
