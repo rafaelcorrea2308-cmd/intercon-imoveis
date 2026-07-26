@@ -1,13 +1,6 @@
 {
   "imoveis": [
     {
-      "fotos": [
-        "assets/anuncios/1/foto2.jpg",
-        "assets/anuncios/1/foto1.jpg"
-      ],
-      "videos": [
-        "assets/anuncios/1/video1.mp4"
-      ],
       "quartos": 3,
       "cidade": "Campo Grande - MS",
       "bairro": "Jardim dos Estados",
@@ -24,13 +17,23 @@
       "titulo": "Casa no Jardim dos Estados",
       "id": "1",
       "mapaEmbedUrl": "https://maps.app.goo.gl/3zHNYbPbVbecbZQw7",
-      "mapaLink": "https://maps.app.goo.gl/3zHNYbPbVbecbZQw7"
+      "mapaLink": "https://maps.app.goo.gl/3zHNYbPbVbecbZQw7",
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/1/foto2.jpg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/1/foto1.jpg"
+        },
+        {
+          "tipo": "video",
+          "src": "assets/anuncios/1/video1.mp4"
+        }
+      ]
     },
     {
-      "fotos": [
-        "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80"
-      ],
-      "videos": [],
       "quartos": 3,
       "cidade": "Campo Grande - MS",
       "bairro": "Monte Castelo",
@@ -45,7 +48,13 @@
       "unidade_temporada": "dia",
       "banheiros": 5,
       "titulo": "Casa no Monte Castelo",
-      "id": "2"
+      "id": "2",
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80"
+        }
+      ]
     },
     {
       "quartos": 4,
@@ -57,15 +66,17 @@
       "preco": 2200,
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
-      "fotos": [
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
-      ],
-      "videos": [],
       "tipo": "Casa",
       "disponivel": true,
       "banheiros": 3,
       "titulo": "Casa no Monte Castelo",
-      "id": "3"
+      "id": "3",
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+        }
+      ]
     },
     {
       "quartos": 2,
@@ -77,15 +88,17 @@
       "preco": 1100,
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
-      "fotos": [
-        "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"
-      ],
-      "videos": [],
       "tipo": "Casa",
       "disponivel": true,
       "banheiros": 1,
       "titulo": "Casa na Coophavila",
-      "id": "4"
+      "id": "4",
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"
+        }
+      ]
     },
     {
       "quartos": 3,
@@ -97,15 +110,17 @@
       "preco": 1650,
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
-      "fotos": [
-        "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80"
-      ],
-      "videos": [],
       "tipo": "Casa",
       "disponivel": true,
       "banheiros": 2,
       "titulo": "Casa no Tiradentes",
-      "id": "5"
+      "id": "5",
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80"
+        }
+      ]
     },
     {
       "quartos": 3,
@@ -118,23 +133,19 @@
       "preco": 21669,
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
-      "fotos": [
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
-      ],
-      "videos": [],
       "tipo": "Casa",
       "disponivel": true,
       "banheiros": 2,
       "titulo": "Casa no Amambaí",
-      "id": "6"
+      "id": "6",
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
+        }
+      ]
     },
     {
-      "fotos": [
-        "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp",
-        "assets/anuncios/foto2.jpeg",
-        "assets/anuncios/foto2.jpeg"
-      ],
-      "videos": [],
       "quartos": 0,
       "cidade": "Campo Grande - MS",
       "bairro": "Aroeira",
@@ -148,7 +159,21 @@
       "disponivel": true,
       "banheiros": 0,
       "titulo": "vamos ver",
-      "id": "7"
+      "id": "7",
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/kitnets-pequenas-e-modernas-5-x-5m-viver-de-kitnet-5-kitnets-bem.webp"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/foto2.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/foto2.jpeg"
+        }
+      ]
     }
   ]
 }
