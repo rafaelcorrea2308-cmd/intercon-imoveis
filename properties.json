@@ -1,6 +1,24 @@
 {
   "imoveis": [
     {
+      "cidade": "Campo Grande - MS",
+      "bairro": "ssde",
+      "descricao": "cexdx",
+      "finalidade": "Aluguel",
+      "whatsapp": "5567992277174",
+      "tipo": "Casa",
+      "disponivel": true,
+      "unidade_temporada": "dia",
+      "titulo": "edew",
+      "id": "1",
+      "imagens": [
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/foto2.jpeg"
+        }
+      ]
+    },
+    {
       "quartos": 3,
       "cidade": "rio branco - AC",
       "bairro": "Monte Castelo",
