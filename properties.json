@@ -2,7 +2,7 @@
   "imoveis": [
     {
       "quartos": 3,
-      "cidade": "Campo Grande - AC",
+      "cidade": "rio branco - AC",
       "bairro": "Monte Castelo",
       "descricao": "Casa compacta e prática, ótima para casal ou pequena família. Rua tranquila, próxima a comércio e ponto de ônibus.",
       "area": 120,
@@ -14,7 +14,7 @@
       "disponivel": true,
       "unidade_temporada": "dia",
       "banheiros": 5,
-      "titulo": "Casa no Monte Castelo",
+      "titulo": "Casa no rio branco",
       "id": "2",
       "imagens": [
         {
