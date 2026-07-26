@@ -36,7 +36,7 @@
         var hadValueAtMount = !!(this.props.value && String(this.props.value).trim());
         return {
           lockedFromStart: hadValueAtMount,
-          status: 'idle',
+          status: hadValueAtMount ? 'idle' : 'idle',
           message: ''
         };
       },
@@ -78,21 +78,17 @@
           });
         }, 500);
       },
+      // Validação síncrona, baseada no resultado que já foi calculado
+      // enquanto o usuário digitava (this.state.status/message). Evita
+      // depender de uma nova checagem assíncrona (Promise) no momento do
+      // "Publish", que o painel pode não aguardar corretamente e travar
+      // o salvamento sem nenhum aviso visível.
       isValid: function () {
         if (this.state.lockedFromStart) return true;
-        var value = this.props.value;
-        if (!value || !String(value).trim()) return true;
-        var self = this;
-        return this.checkId(value).then(function (result) {
-          // Atualiza o estado visual do campo com o resultado desta checagem
-          // final (a mesma que decide se o salvamento é bloqueado), para que
-          // o motivo do bloqueio fique visível na tela em vez de silencioso.
-          self.setState(result);
-          if (result.status === 'duplicate') {
-            return { error: { message: result.message } };
-          }
-          return true;
-        });
+        if (this.state.status === 'duplicate') {
+          return { error: { message: this.state.message } };
+        }
+        return true;
       },
       render: function () {
         var value = this.props.value || '';
