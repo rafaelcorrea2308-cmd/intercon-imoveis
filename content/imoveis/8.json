@@ -5,7 +5,7 @@
   "descricao": "Imóvel de teste criado para verificação do painel aministrativo. Não é um anúncio real.",
   "area": 50,
   "vagas": 0,
-  "preco": 50000,
+  "preco": "",
   "fotos": [
     "assets/anuncios/foto2.jpeg"
   ],
