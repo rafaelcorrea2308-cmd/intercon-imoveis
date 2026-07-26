@@ -93,10 +93,6 @@
         {
           "tipo": "imagem",
           "src": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"
-        },
-        {
-          "tipo": "video",
-          "src": "assets/anuncios/video2.mp4"
         }
       ]
     },
