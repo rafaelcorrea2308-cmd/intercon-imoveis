@@ -22,6 +22,21 @@
 
   var REGRAS = [
     {
+      // Itens extras do menu suspenso (setinha ▼) dos botões
+      // Publicar/Publicado — deixa só a ação simples de publicar.
+      // PRECISA vir antes da regra "Publicar/Publicado" logo abaixo,
+      // porque "Publicar agora" também contém a palavra "Publicar" e
+      // seria pega por engano por aquela regra primeiro.
+      textos: [
+        'Duplicado',
+        'Duplicar',
+        'Publicar agora',
+        'Publicar e criar novo(a)',
+        'Publicar e duplicar'
+      ],
+      estilo: { display: 'none' }
+    },
+    {
       textos: ['EXCLUIR ANÚNCIO'],
       estilo: Object.assign({}, estiloBotaoGrande, {
         backgroundColor: '#D50000',
@@ -73,19 +88,6 @@
       // Etiqueta "FOTO" redundante que aparece em cima de cada imagem
       // dentro da lista de Fotos do anúncio.
       textos: ['FOTO'],
-      modo: 'exato',
-      estilo: { display: 'none' }
-    },
-    {
-      // Itens extras do menu suspenso (setinha ▼) dos botões
-      // Publicar/Publicado — deixa só a ação simples de publicar.
-      textos: [
-        'Duplicado',
-        'Duplicar',
-        'Publicar agora',
-        'Publicar e criar novo(a)',
-        'Publicar e duplicar'
-      ],
       modo: 'exato',
       estilo: { display: 'none' }
     }
