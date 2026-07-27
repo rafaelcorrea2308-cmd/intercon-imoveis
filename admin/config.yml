@@ -13,7 +13,7 @@ public_folder: "assets/anuncios"
 collections:
   - name: "imoveis"
     label: "Publicações"
-    label_singular: "Publicar"
+    label_singular: "Nova"
     folder: "content/imoveis"
     create: true
     extension: "json"
