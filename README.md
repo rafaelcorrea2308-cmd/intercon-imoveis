@@ -1,56 +1,73 @@
-# Intercon Imóveis
+# InterCon Consultoria Imobiliária — Site
 
-Sistema de catálogo imobiliário publicado com GitHub Pages, administrado pelo Decap CMS.
+Site institucional e de listagem de imóveis da InterCon Consultoria Imobiliária (Campo Grande - MS), publicado gratuitamente pelo GitHub Pages e administrado por um painel próprio (Decap CMS) — **sem precisar editar código ou arquivos JSON na mão**.
+
+- 🌐 Site: https://rafaelcorrea2308-cmd.github.io/intercon-imoveis/
+- 🔐 Painel de administração: https://rafaelcorrea2308-cmd.github.io/intercon-imoveis/admin/
+- 📦 Repositório: https://github.com/rafaelcorrea2308-cmd/intercon-imoveis
+
+---
+
+## Como adicionar, editar ou remover um imóvel
+
+Todo o cadastro de imóveis é feito pelo **painel de administração**, não por edição manual de arquivos:
+
+1. Acesse https://rafaelcorrea2308-cmd.github.io/intercon-imoveis/admin/
+2. Faça login com sua conta do GitHub
+3. Adicione, edite ou remova o imóvel pelo formulário (fotos, vídeos, preço, endereço, disponibilidade etc.)
+4. Publique a alteração no painel
+
+Depois de publicar, o GitHub Actions processa a mudança automaticamente e o site é atualizado em poucos minutos. Você pode acompanhar o andamento na aba [Actions](https://github.com/rafaelcorrea2308-cmd/intercon-imoveis/actions) do repositório.
+
+**Não é necessário mexer em código para cadastrar imóveis.** As seções abaixo são para referência técnica de manutenção do site.
+
+---
 
 ## Arquitetura
 
 ```
-content/imoveis/*.json  ->  GitHub Actions (build-properties.js)  ->  properties.json  ->  GitHub Pages
+content/imoveis/*.json (um arquivo por imóvel, editado via painel)
+        │
+        ▼
+scripts/build-properties.js (roda via GitHub Actions, valida os dados)
+        │
+        ▼
+properties.json (gerado automaticamente)
+        │
+        ▼
+GitHub Pages publica o site
 ```
 
-- `index.html` - página inicial com a lista de imóveis
-- `imovel.html` - página de detalhe de cada imóvel (link usado nos QR codes das placas)
-- `content/imoveis/` - um arquivo `.json` por imóvel (fonte de verdade dos dados)
-- `scripts/build-properties.js` - lê os arquivos de `content/imoveis/`, valida os dados e gera `properties.json`
-- `properties.json` - arquivo gerado automaticamente, usado pelo site para montar a lista de imóveis
-- `admin/` - painel Decap CMS para cadastrar e editar imóveis
-- `.github/workflows/` - GitHub Actions que roda o build automaticamente a cada alteração em `content/imoveis/`
+- Cada imóvel é um arquivo content/imoveis/{id}.json, onde {id} é o mesmo valor do campo "id" dentro do arquivo. O build falha se o nome do arquivo e o id não baterem.
+- O campo id é definido apenas na criação do imóvel e depois fica travado no painel (widget customizado admin/locked-id-widget.js), com checagem de duplicidade em tempo real via API do GitHub.
+- Fotos e vídeos são cadastrados em campos separados no painel ("Fotos" e "Vídeos"). O build-properties.js reconstrói o campo imagens (formato que o script.js do site espera) a partir deles.
 
-**Aviso importante:** não edite `properties.json` manualmente. Qualquer alteração feita direto nele será sobrescrita no próximo build. Para mudar um imóvel, edite o arquivo correspondente em `content/imoveis/` (ou use o painel em `/admin/`).
+> ⚠️ **properties.json nunca deve ser editado manualmente.** Ele é gerado automaticamente a cada build e qualquer edição manual é sobrescrita.
 
-## Como administrar os imóveis
+---
 
-1. Acesse `/admin/` no site publicado
-2. Faça login com sua conta do GitHub
-3. Abra a coleção Imóveis
-4. Cadastre um novo imóvel ou edite um existente
-5. Salve - o Decap CMS faz o commit automaticamente em `content/imoveis/`
-6. O GitHub Actions gera o novo `properties.json` e o GitHub Pages publica a atualização em poucos minutos
+## Estrutura de arquivos
 
-Para tirar um imóvel do ar sem perder o link/QR code, desmarque o campo Disponível em vez de excluir o imóvel.
+| Caminho | Descrição |
+|---|---|
+| index.html | Página inicial com a listagem de imóveis |
+| imovel.html | Página de detalhe de um imóvel específico |
+| admin/ | Painel de administração (Decap CMS) e widgets customizados |
+| content/imoveis/*.json | Um arquivo por imóvel — fonte de dados editada via painel |
+| scripts/build-properties.js | Script que valida e gera o properties.json |
+| properties.json | Arquivo gerado automaticamente — **não editar na mão** |
+| script.js | Lógica do site (busca, filtros, listagem, detalhe) |
+| style.css | Estilos do site |
+| .github/workflows/ | Workflow do GitHub Actions que roda o build a cada alteração |
 
-### Preço conforme a finalidade
+---
 
-- Aluguel - o preço é sempre exibido por mês
-- Venda - o preço é exibido como valor total, sem sufixo
-- Temporada - use o campo Unidade de preço para escolher se o valor é por dia, por semana ou por mês
+## Autenticação do painel
 
-## Rodando localmente
+O login do painel (Decap CMS) usa GitHub OAuth através de um Cloudflare Worker (intercon-oauth.rafaelcorrea2308.workers.dev). O Client Secret desse OAuth App fica configurado apenas no Cloudflare Worker e nunca deve ser exposto em código, documentação ou conversas.
 
-Como o site usa `fetch('properties.json')`, ele precisa ser servido por um servidor local (não funciona abrindo o `index.html` direto pelo `file://`). Uma forma simples:
+---
 
-```
-npx serve .
-```
+## Contato
 
-## Gerando o properties.json manualmente
-
-```
-node scripts/build-properties.js
-```
-
-O script valida os imóveis (id único, título, bairro, cidade, finalidade, tipo, preço, disponibilidade, WhatsApp) antes de gerar o arquivo. Se algum imóvel estiver com dado inválido, o script mostra os erros encontrados e não gera o `properties.json`.
-
-## Domínio e QR codes
-
-O link de cada imóvel é `https://SEU-DOMINIO/imovel.html?id=ID_DO_IMOVEL`. Esse link não muda enquanto o `id` do imóvel não for alterado, então o QR code impresso na placa continua funcionando mesmo que o imóvel fique indisponível temporariamente.
+Administrado por Edgar Oliveira Corrêa — Engenheiro Civil (CREA/MS 2546-D) e Corretor de Imóveis (CRECI/MS 2260).
