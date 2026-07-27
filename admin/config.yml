@@ -48,7 +48,7 @@ collections:
         field: bairro
     fields:
       - { label: "ID (número único, definido na criação — não pode ser alterado depois)", name: "id", widget: "lockedid" }
-      - { label: "Disponível (desmarque quando alugar/vender)", name: "disponivel", widget: "boolean", default: true }
+      - { label: "Disponível", name: "disponivel", widget: "boolean", default: true, hint: "Desmarque quando o imóvel for alugado ou vendido." }
       - label: "UF (estado)"
         name: "uf"
         widget: "select"
