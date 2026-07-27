@@ -1,12 +1,12 @@
 {
-  "quartos": 3,
+  "quartos": 0,
   "cidade": "Vilhena",
   "bairro": "Centro",
   "descricao": "Casa compacta e prática, ótima para casal ou pequena família. Rua tranquila, próxima a comércio e ponto de ônibus.",
   "endereco": "rua curitiba, 520, vilhena, rondonia",
   "area": 128,
-  "vagas": 2,
-  "preco": 2650,
+  "vagas": 0,
+  "preco": 0,
   "fotos": [
     "assets/anuncios/2/captura-de-tela-2025-11-07-101351.png"
   ],
@@ -17,7 +17,7 @@
   "disponivel": true,
   "unidade_temporada": "dia",
   "videos": [],
-  "banheiros": 2,
+  "banheiros": 0,
   "titulo": "Casa em Vilhena",
   "id": "2"
 }
