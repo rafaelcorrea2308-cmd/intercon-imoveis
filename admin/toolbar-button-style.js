@@ -136,22 +136,40 @@
   }
 
   function esconderSetaVizinha(btn) {
-    // A setinha ▼ do menu suspenso normalmente é um botão separado,
-    // "colado" visualmente ao lado do botão Publicar/Publicado, sem
-    // texto (só um ícone). Como já escondemos todos os itens de dentro
-    // desse menu, a seta ficaria abrindo uma caixinha vazia — por isso
-    // procuramos ela entre os elementos vizinhos do botão principal e
-    // escondemos também.
+    // Tentativa 1: às vezes a setinha é um botão separado, "colado"
+    // visualmente ao lado do botão Publicar/Publicado, sem texto (só um
+    // ícone). Como já escondemos todos os itens de dentro desse menu, a
+    // seta ficaria abrindo uma caixinha vazia — por isso procuramos ela
+    // entre os elementos vizinhos do botão principal e escondemos.
     var pai = btn.parentElement;
-    if (!pai) return;
-    var candidatos = pai.querySelectorAll('button, [role="button"]');
-    for (var i = 0; i < candidatos.length; i++) {
-      var el = candidatos[i];
-      if (el === btn) continue;
-      var texto = (el.textContent || '').trim();
-      if (texto) continue; // só mexe em botões sem texto (ícone puro)
-      el.setAttribute(STYLED_FLAG, '1');
-      el.style.display = 'none';
+    if (pai) {
+      var candidatos = pai.querySelectorAll('button, [role="button"]');
+      for (var i = 0; i < candidatos.length; i++) {
+        var el = candidatos[i];
+        if (el === btn) continue;
+        var texto = (el.textContent || '').trim();
+        if (texto) continue; // só mexe em botões sem texto (ícone puro)
+        el.setAttribute(STYLED_FLAG, '1');
+        el.style.display = 'none';
+      }
+    }
+
+    // Tentativa 2: se a seta for, na verdade, um caractere dentro do
+    // próprio texto do botão (ex: "Publicar ▼" tudo junto), apaga só
+    // esse caractere do texto, sem mexer no resto.
+    var walker = document.createTreeWalker(btn, NodeFilter.SHOW_TEXT);
+    var no;
+    while ((no = walker.nextNode())) {
+      if (no.nodeValue && /[▼▾⌄]/.test(no.nodeValue)) {
+        no.nodeValue = no.nodeValue.replace(/\s*[▼▾⌄]\s*/g, '');
+      }
+    }
+
+    // Tentativa 3: se a seta for um ícone SVG dentro do próprio botão
+    // (não texto, não botão separado), esconde o SVG.
+    var svgs = btn.querySelectorAll('svg');
+    for (var s = 0; s < svgs.length; s++) {
+      svgs[s].style.display = 'none';
     }
   }
 
