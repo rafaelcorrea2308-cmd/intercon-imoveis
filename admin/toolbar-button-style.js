@@ -34,14 +34,12 @@
     },
     {
       textos: ['Publicar', 'Publicado'],
-      estilo: Object.assign({}, estiloBotaoGrande, {
+      estilo: {
         backgroundColor: '#00A62A',
         color: '#ffffff',
         fontWeight: 'bold',
-        border: 'none',
-        order: '5',
-        marginLeft: '24px'
-      })
+        border: 'none'
+      }
     },
     {
       // Esconde o link "Mídia" da barra de navegação principal (o painel
