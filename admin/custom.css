@@ -1,10 +1,8 @@
 /* Ajustes de acessibilidade para facilitar o uso do painel por pessoas
-   com menos familiaridade com tecnologia (botões maiores).
-   OBS: o aumento geral de fonte (html { font-size }) foi removido daqui
-   porque causou dois problemas de layout diferentes em widgets do
-   Decap que não foram desenhados para textos maiores (rótulo cortado e
-   o interruptor "Disponível" deslocado). */
-
-button {
-  min-height: 40px;
-}
+   com menos familiaridade com tecnologia.
+   OBS: tanto o aumento geral de fonte quanto a altura mínima forçada
+   em botões foram removidos daqui — os dois causaram problemas de
+   layout em widgets do Decap que não foram desenhados para isso
+   (rótulo cortado e o interruptor "Disponível" deslocado). Esses
+   ajustes de acessibilidade acabaram não valendo o risco de quebrar a
+   tela em outros lugares sem eu poder testar ao vivo. */
