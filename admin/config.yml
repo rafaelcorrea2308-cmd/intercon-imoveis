@@ -4,8 +4,8 @@ backend:
   branch: main
   base_url: https://intercon-oauth.rafaelcorrea2308.workers.dev
   auth_endpoint: auth
-  locale: 'pt'
 
+locale: 'pt'
 media_folder: "assets/anuncios"
 public_folder: "assets/anuncios"
 
@@ -77,14 +77,16 @@ collections:
         name: "fotos"
         widget: "list"
         required: false
-        hint: "Arraste as fotos para esta área ou clique para escolher do computador. As fotos ficam guardadas numa pasta exclusiva deste anúncio — não aparecem nem são afetadas por outros anúncios."
+        collapsed: false
+        hint: "Toque em \"Adicionar Fotos\" para escolher as fotos do imóvel. Para apagar uma foto, toque no X vermelho ao lado dela."
         field: { label: "Foto", name: "src", widget: "image", choose_url: false }
         summary: "{{fields.src}}"
       - label: "Vídeos"
         name: "videos"
         widget: "list"
         required: false
-        hint: "Arquivos de vídeo (formato .mp4). Opcional. Também ficam guardados numa pasta exclusiva deste anúncio."
+        collapsed: false
+        hint: "Vídeo do imóvel (opcional). Toque no X vermelho para apagar."
         field: { label: "Vídeo", name: "src", widget: "file", choose_url: false }
         summary: "{{fields.src}}"
       - { label: "Endereço completo (rua, número, bairro, cidade)", name: "endereco", widget: "string", required: false, hint: "Digite o endereço completo. O mapa é gerado automaticamente." }

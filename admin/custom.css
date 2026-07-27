@@ -1,0 +1,9 @@
+/* Ajustes de acessibilidade para facilitar o uso do painel por pessoas
+   com menos familiaridade com tecnologia (texto e botões maiores). */
+html {
+  font-size: 112%;
+}
+
+button {
+  min-height: 40px;
+}
