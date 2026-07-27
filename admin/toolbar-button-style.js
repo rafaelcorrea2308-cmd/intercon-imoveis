@@ -33,6 +33,15 @@
       })
     },
     {
+      // Itens secundários do menu suspenso do botão Publicar/Publicado.
+      // IMPORTANTE: "Publicar agora" NÃO entra nessa lista de propósito
+      // — é a ação que realmente publica o anúncio (o clique no botão
+      // principal só abre o menu, não publica sozinho). Escondê-la de
+      // novo tira a única forma de publicar.
+      textos: ['Duplicado', 'Duplicar', 'Publicar e criar novo(a)', 'Publicar e duplicar'],
+      estilo: { display: 'none' }
+    },
+    {
       textos: ['Publicar', 'Publicado'],
       estilo: {
         backgroundColor: '#00A62A',
