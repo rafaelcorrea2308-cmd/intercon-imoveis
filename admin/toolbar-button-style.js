@@ -26,7 +26,9 @@
         backgroundColor: '#00A62A',
         color: '#ffffff',
         fontWeight: 'bold',
-        border: 'none'
+        border: 'none',
+        order: '5',
+        marginLeft: '24px'
       }
     },
     {
@@ -41,6 +43,19 @@
       estilo: {
         display: 'none'
       }
+    },
+    {
+      // Botão que fica checando se já existe link de pré-visualização
+      // do deploy. Mesmo com show_preview_links: false no config.yml,
+      // deixamos essa regra como garantia (ex: enquanto o cache do
+      // GitHub Pages não atualiza).
+      textos: ['Verificar se há Pré-visualização', 'Ver Pré-visualização', 'Ver em Produção'],
+      estilo: { display: 'none' }
+    },
+    {
+      // Botão "Adição rápida" da barra de navegação principal.
+      textos: ['Adição rápida'],
+      estilo: { display: 'none' }
     }
   ];
 
