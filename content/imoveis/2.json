@@ -15,9 +15,7 @@
   "tipo": "Casa",
   "disponivel": true,
   "unidade_temporada": "dia",
-  "videos": [
-    "https://www.youtube.com/watch?v=gQbZX9JEQsQ"
-  ],
+  "videos": [],
   "banheiros": 5,
   "titulo": "Casa no rio branco",
   "id": "2"
