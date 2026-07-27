@@ -21,6 +21,9 @@
       pt.editor.editorToolbar.deletePublishedEntry = 'EXCLUIR ANÚNCIO';
       pt.editor.editorToolbar.deleteUnpublishedEntry = 'EXCLUIR ANÚNCIO';
     }
+    if (pt.mediaLibrary && pt.mediaLibrary.mediaLibraryModal) {
+      pt.mediaLibrary.mediaLibraryModal.upload = 'Adicionar Foto';
+    }
 
     window.CMS.registerLocale('pt', pt);
   }

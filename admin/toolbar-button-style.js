@@ -75,6 +75,15 @@
       textos: ['FOTO'],
       modo: 'exato',
       estilo: { display: 'none' }
+    },
+    {
+      // Botões da galeria de mídia que não precisam aparecer pro uso do
+      // dia a dia (copiar caminho do arquivo, baixar, excluir pela
+      // galeria — a exclusão já é feita direto no campo de Fotos/
+      // Vídeos do anúncio — e escolher um arquivo já existente).
+      textos: ['Copiar', 'Download', 'Excluir selecionado', 'Escolher selecionado'],
+      modo: 'exato',
+      estilo: { display: 'none' }
     }
   ];
 
