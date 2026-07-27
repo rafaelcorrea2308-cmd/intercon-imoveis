@@ -8,28 +8,40 @@
   // voltam a aparecer com o visual padrão, sem quebrar nada.
   var STYLED_FLAG = 'data-toolbar-estilizado';
 
+  var estiloBotaoGrande = {
+    padding: '10px 22px',
+    fontSize: '14px',
+    lineHeight: '20px',
+    borderRadius: '4px',
+    textTransform: 'uppercase',
+    letterSpacing: '0.5px',
+    minWidth: '160px',
+    textAlign: 'center',
+    boxSizing: 'border-box'
+  };
+
   var REGRAS = [
     {
       textos: ['EXCLUIR ANÚNCIO'],
-      estilo: {
+      estilo: Object.assign({}, estiloBotaoGrande, {
         backgroundColor: '#D50000',
         color: '#ffffff',
         fontWeight: 'bold',
         border: 'none',
         order: '5',
         marginLeft: '24px'
-      }
+      })
     },
     {
       textos: ['Publicar', 'Publicado'],
-      estilo: {
+      estilo: Object.assign({}, estiloBotaoGrande, {
         backgroundColor: '#00A62A',
         color: '#ffffff',
         fontWeight: 'bold',
         border: 'none',
         order: '5',
         marginLeft: '24px'
-      }
+      })
     },
     {
       // Esconde o link "Mídia" da barra de navegação principal (o painel
