@@ -85,7 +85,7 @@ collections:
         widget: "list"
         required: false
         hint: "Arquivos de vídeo (formato .mp4). Opcional. Também ficam guardados numa pasta exclusiva deste anúncio."
-        field: { label: "Vídeo", name: "src", widget: "file" }
+        field: { label: "Vídeo", name: "src", widget: "file", choose_url: false }
         summary: "{{fields.src}}"
       - { label: "Endereço completo (rua, número, bairro, cidade)", name: "endereco", widget: "string", required: false, hint: "Digite o endereço completo. O mapa é gerado automaticamente." }
       - { label: "WhatsApp (com DDI 55 + DDD, só números)", name: "whatsapp", widget: "string" }
