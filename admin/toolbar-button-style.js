@@ -28,11 +28,21 @@
         fontWeight: 'bold',
         border: 'none'
       }
+    },
+    {
+      // Esconde o link "Mídia" da barra de navegação principal (o painel
+      // do anúncio continua abrindo a mídia normalmente pelos campos de
+      // Fotos/Vídeos — só a galeria geral, sem contexto de anúncio,
+      // fica escondida).
+      textos: ['Mídia'],
+      estilo: {
+        display: 'none'
+      }
     }
   ];
 
   function aplicarEstilos() {
-    var buttons = document.querySelectorAll('button, a[role="button"]');
+    var buttons = document.querySelectorAll('button, a, a[role="button"]');
     for (var i = 0; i < buttons.length; i++) {
       var btn = buttons[i];
       if (btn.getAttribute(STYLED_FLAG)) continue;
