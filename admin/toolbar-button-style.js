@@ -68,6 +68,13 @@
       // Botão "Adição rápida" da barra de navegação principal.
       textos: ['Adição rápida'],
       estilo: { display: 'none' }
+    },
+    {
+      // Etiqueta "FOTO" redundante que aparece em cima de cada imagem
+      // dentro da lista de Fotos do anúncio.
+      textos: ['FOTO'],
+      modo: 'exato',
+      estilo: { display: 'none' }
     }
   ];
 
@@ -114,7 +121,7 @@
 
   function aplicarEstilos() {
     var buttons = document.querySelectorAll(
-      'button, a, [role="button"], [role="menuitem"]'
+      'button, a, label, [role="button"], [role="menuitem"]'
     );
     for (var i = 0; i < buttons.length; i++) {
       var btn = buttons[i];
