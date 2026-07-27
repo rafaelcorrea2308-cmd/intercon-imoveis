@@ -1,22 +1,23 @@
 {
   "quartos": 3,
-  "cidade": "rio branco",
-  "bairro": "Monte Castelo",
+  "cidade": "Vilhena",
+  "bairro": "Centro",
   "descricao": "Casa compacta e prática, ótima para casal ou pequena família. Rua tranquila, próxima a comércio e ponto de ônibus.",
-  "area": 120,
+  "endereco": "rua curitiba, 520, vilhena, rondonia",
+  "area": 128,
   "vagas": 2,
-  "preco": 4500,
+  "preco": 2650,
   "fotos": [
     "assets/anuncios/2/captura-de-tela-2025-11-07-101351.png"
   ],
-  "finalidade": "Aluguel",
-  "uf": "AC",
+  "finalidade": "Obras e serviços",
+  "uf": "RO",
   "whatsapp": "5567992277174",
   "tipo": "Casa",
-  "disponivel": false,
+  "disponivel": true,
   "unidade_temporada": "dia",
   "videos": [],
-  "banheiros": 5,
-  "titulo": "Casa no rio branco",
+  "banheiros": 2,
+  "titulo": "Casa em Vilhena",
   "id": "2"
 }
