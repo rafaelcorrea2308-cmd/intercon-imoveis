@@ -38,7 +38,7 @@
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
       "tipo": "Casa",
-      "disponivel": true,
+      "disponivel": false,
       "unidade_temporada": "dia",
       "banheiros": 5,
       "titulo": "Casa no rio branco",
