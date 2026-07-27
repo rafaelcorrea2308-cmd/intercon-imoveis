@@ -42,6 +42,16 @@
       estilo: { display: 'none' }
     },
     {
+      // Botão "+ Nova" (criar novo anúncio) na tela principal da lista.
+      textos: ['Nova'],
+      estilo: {
+        backgroundColor: '#00A62A',
+        color: '#ffffff',
+        fontWeight: 'bold',
+        border: 'none'
+      }
+    },
+    {
       textos: ['Publicar', 'Publicado'],
       estilo: {
         backgroundColor: '#00A62A',
