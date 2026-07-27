@@ -77,11 +77,6 @@ imoveis.forEach(({ arquivo, dados }) => {
                   if (!dados.whatsapp || !/^\d+$/.test(String(dados.whatsapp))) {
                         erros.push(`${arquivo}: "whatsapp" ausente ou deve conter só números (com DDI+DDD)`);
                   }
-                  const fotos = Array.isArray(dados.fotos) ? dados.fotos.filter(Boolean) : [];
-                  const videos = Array.isArray(dados.videos) ? dados.videos.filter(Boolean) : [];
-                  if (fotos.length + videos.length === 0) {
-                        erros.push(`${arquivo}: adicione pelo menos 1 foto ou vídeo`);
-                  }
 });
 
 // Reconstrói o campo "imagens" (formato que o site espera) a partir dos

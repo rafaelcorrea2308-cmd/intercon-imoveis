@@ -77,8 +77,8 @@ collections:
         name: "fotos"
         widget: "list"
         required: false
-        hint: "Arraste as fotos para esta área ou clique para escolher do computador. É necessário ter pelo menos 1 foto ou vídeo no total (some com o campo Vídeos abaixo). As fotos ficam guardadas numa pasta exclusiva deste anúncio — não aparecem nem são afetadas por outros anúncios."
-        field: { label: "Foto", name: "src", widget: "image" }
+        hint: "Arraste as fotos para esta área ou clique para escolher do computador. As fotos ficam guardadas numa pasta exclusiva deste anúncio — não aparecem nem são afetadas por outros anúncios."
+        field: { label: "Foto", name: "src", widget: "image", choose_url: false }
         summary: "{{fields.src}}"
       - label: "Vídeos"
         name: "videos"
