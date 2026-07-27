@@ -49,21 +49,21 @@ collections:
     fields:
       - { label: "ID (número único, definido na criação — não pode ser alterado depois)", name: "id", widget: "lockedid" }
       - { label: "Disponível", name: "disponivel", widget: "boolean", default: true, hint: "Desmarque quando o imóvel for alugado ou vendido." }
-      - label: "UF (estado)"
+      - label: "UF (estado) — Obrigatório"
         name: "uf"
         widget: "select"
         options: ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
         default: "MS"
-      - { label: "Cidade", name: "cidade", widget: "string", default: "Campo Grande", hint: "Digite apenas o nome da cidade, sem o estado (o estado é selecionado no campo UF acima)." }
-      - { label: "Bairro", name: "bairro", widget: "string" }
-      - { label: "Título do anúncio", name: "titulo", widget: "string" }
-      - label: "Finalidade"
+      - { label: "Cidade — Obrigatório", name: "cidade", widget: "string", default: "Campo Grande", hint: "Digite apenas o nome da cidade, sem o estado (o estado é selecionado no campo UF acima)." }
+      - { label: "Bairro — Obrigatório", name: "bairro", widget: "string" }
+      - { label: "Título do anúncio — Obrigatório", name: "titulo", widget: "string" }
+      - label: "Finalidade — Obrigatório"
         name: "finalidade"
         widget: "select"
         options: ["Aluguel", "Venda", "Temporada", "Obras e serviços"]
         default: "Aluguel"
       - { label: "Unidade de preço (somente para Temporada)", name: "unidade_temporada", widget: "select", options: ["dia", "semana", "mês", "hóspede"], default: "dia", required: false, hint: "Usado apenas quando a finalidade for Temporada. Aluguel é sempre por mês e Venda é valor total." }
-      - label: "Tipo de imóvel"
+      - label: "Tipo de imóvel — Obrigatório"
         name: "tipo"
         widget: "select"
         options: ["Casa", "Apartamento", "Terreno", "Sala Comercial", "Chácara", "Studio"]
@@ -73,7 +73,7 @@ collections:
       - { label: "Banheiros", name: "banheiros", widget: "number", value_type: "int", required: false }
       - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int", required: false }
       - { label: "Área (m²)", name: "area", widget: "number", value_type: "int", required: false }
-      - { label: "Descrição", name: "descricao", widget: "text" }
+      - { label: "Descrição — Obrigatório", name: "descricao", widget: "text" }
       - label: "Fotos"
         name: "fotos"
         widget: "list"
@@ -91,4 +91,4 @@ collections:
         field: { label: "Vídeo", name: "src", widget: "file", choose_url: false }
         summary: "{{fields.src}}"
       - { label: "Endereço completo (rua, número, bairro, cidade)", name: "endereco", widget: "string", required: false, hint: "Digite o endereço completo. O mapa é gerado automaticamente." }
-      - { label: "WhatsApp (com DDI 55 + DDD, só números)", name: "whatsapp", widget: "string" }
+      - { label: "WhatsApp (com DDI 55 + DDD, só números) — Obrigatório", name: "whatsapp", widget: "string" }

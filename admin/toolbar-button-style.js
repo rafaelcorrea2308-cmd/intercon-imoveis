@@ -82,9 +82,9 @@
       textos: [
         'Duplicado',
         'Duplicar',
-        'PUBLICAR AGORA',
-        'PUBLICAR E CRIAR NOVO(A)',
-        'PUBLICAR E DUPLICAR'
+        'Publicar agora',
+        'Publicar e criar novo(a)',
+        'Publicar e duplicar'
       ],
       modo: 'exato',
       estilo: { display: 'none' }
@@ -163,11 +163,30 @@
     }
   }
 
+  function removerTextoOpcional() {
+    // Em vez de esconder o rótulo inteiro (que ia embora com o nome do
+    // campo junto), aqui a gente localiza só o pedacinho de texto
+    // "(opcional)" dentro do nó de texto e apaga ele, deixando o resto
+    // do rótulo intacto. Funciona não importa se o CSS do Decap mostra
+    // isso em maiúsculo ou minúsculo, porque comparamos sem diferenciar
+    // caixa alta/baixa.
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var no;
+    while ((no = walker.nextNode())) {
+      if (!no.nodeValue) continue;
+      if (/\(\s*opcional\s*\)/i.test(no.nodeValue)) {
+        no.nodeValue = no.nodeValue.replace(/\s*\(\s*opcional\s*\)/i, '');
+      }
+    }
+  }
+
   var observer = new MutationObserver(function () {
     aplicarEstilos();
     aplicarEstiloIcones();
+    removerTextoOpcional();
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
   aplicarEstilos();
   aplicarEstiloIcones();
+  removerTextoOpcional();
 })();
