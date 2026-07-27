@@ -12,7 +12,7 @@
     {
       textos: ['EXCLUIR ANÚNCIO'],
       estilo: {
-        backgroundColor: '#C81B2E',
+        backgroundColor: '#D50000',
         color: '#ffffff',
         fontWeight: 'bold',
         border: 'none',
@@ -23,7 +23,7 @@
     {
       textos: ['Publicar', 'Publicado'],
       estilo: {
-        backgroundColor: '#1DA851',
+        backgroundColor: '#00A62A',
         color: '#ffffff',
         fontWeight: 'bold',
         border: 'none'
