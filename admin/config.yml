@@ -6,6 +6,7 @@ backend:
   auth_endpoint: auth
 
 locale: 'pt'
+show_preview_links: false
 media_folder: "assets/anuncios"
 public_folder: "assets/anuncios"
 

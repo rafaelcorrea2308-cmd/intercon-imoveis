@@ -44,6 +44,40 @@
     }
   ];
 
+  // Botões só de ícone (olho e seta dupla) não têm texto visível — o
+  // Decap CMS só descreve eles via title/aria-label. Por isso usam uma
+  // lista separada, comparada com esses atributos em vez do texto.
+  var REGRAS_ICONE = [
+    {
+      alvos: ['Mudar pré-visualização', 'Toggle preview'],
+      estilo: { display: 'none' }
+    },
+    {
+      alvos: ['Sincronizar rolagem', 'Toggle scroll sync', 'Scroll Sync'],
+      estilo: { display: 'none' }
+    }
+  ];
+
+  function aplicarEstiloIcones() {
+    var elementos = document.querySelectorAll('[title], [aria-label]');
+    for (var i = 0; i < elementos.length; i++) {
+      var el = elementos[i];
+      if (el.getAttribute(STYLED_FLAG)) continue;
+      var descricao = (el.getAttribute('title') || el.getAttribute('aria-label') || '').trim();
+      if (!descricao) continue;
+      for (var r = 0; r < REGRAS_ICONE.length; r++) {
+        if (REGRAS_ICONE[r].alvos.indexOf(descricao) !== -1) {
+          el.setAttribute(STYLED_FLAG, '1');
+          var estilo = REGRAS_ICONE[r].estilo;
+          for (var prop in estilo) {
+            el.style[prop] = estilo[prop];
+          }
+          break;
+        }
+      }
+    }
+  }
+
   function textoContemAlvo(text, alvo) {
     // Usa "contém" em vez de igualdade exata, porque alguns desses
     // botões (ex: "Publicado ▼") têm um ícone de seta grudado no texto,
@@ -82,7 +116,11 @@
     }
   }
 
-  var observer = new MutationObserver(aplicarEstilos);
+  var observer = new MutationObserver(function () {
+    aplicarEstilos();
+    aplicarEstiloIcones();
+  });
   observer.observe(document.documentElement, { childList: true, subtree: true });
   aplicarEstilos();
+  aplicarEstiloIcones();
 })();
