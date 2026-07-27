@@ -33,22 +33,44 @@
       // Esconde o link "Mídia" da barra de navegação principal (o painel
       // do anúncio continua abrindo a mídia normalmente pelos campos de
       // Fotos/Vídeos — só a galeria geral, sem contexto de anúncio,
-      // fica escondida).
+      // fica escondida). Comparação EXATA aqui, de propósito: se fosse
+      // "contém", corria o risco de esconder por engano algum botão
+      // dentro do seletor de foto/vídeo que também mencione "mídia".
       textos: ['Mídia'],
+      modo: 'exato',
       estilo: {
         display: 'none'
       }
     }
   ];
 
+  function textoContemAlvo(text, alvo) {
+    // Usa "contém" em vez de igualdade exata, porque alguns desses
+    // botões (ex: "Publicado ▼") têm um ícone de seta grudado no texto,
+    // o que quebraria uma comparação exata.
+    return text.indexOf(alvo) !== -1;
+  }
+
   function aplicarEstilos() {
-    var buttons = document.querySelectorAll('button, a, a[role="button"]');
+    var buttons = document.querySelectorAll(
+      'button, a, [role="button"], [role="menuitem"]'
+    );
     for (var i = 0; i < buttons.length; i++) {
       var btn = buttons[i];
       if (btn.getAttribute(STYLED_FLAG)) continue;
       var text = (btn.textContent || '').trim();
+      if (!text) continue;
       for (var r = 0; r < REGRAS.length; r++) {
-        if (REGRAS[r].textos.indexOf(text) !== -1) {
+        var textos = REGRAS[r].textos;
+        var exato = REGRAS[r].modo === 'exato';
+        var bateu = false;
+        for (var t = 0; t < textos.length; t++) {
+          if (exato ? text === textos[t] : textoContemAlvo(text, textos[t])) {
+            bateu = true;
+            break;
+          }
+        }
+        if (bateu) {
           btn.setAttribute(STYLED_FLAG, '1');
           var estilo = REGRAS[r].estilo;
           for (var prop in estilo) {
