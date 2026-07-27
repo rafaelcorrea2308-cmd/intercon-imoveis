@@ -44,7 +44,7 @@ function specsForType(p) {
               if (temArea) specs.push(`${ICONS.area}${p.area}m²`);
               return specs;
   }
-      if (tipo === 'Sala Comercial') {
+      if (tipo === 'Sala/Galpão Comercial') {
               if (temBanheiros) specs.push(`${ICONS.bath}${p.banheiros}`);
               if (temVagas) specs.push(`${ICONS.car}${p.vagas}`);
               if (temArea) specs.push(`${ICONS.area}${p.area}m²`);
@@ -70,7 +70,7 @@ function detailSpecsForType(p) {
               if (temArea) specs.push(`${ICONS.area}${p.area} m²`);
               return specs;
   }
-      if (tipo === 'Sala Comercial') {
+      if (tipo === 'Sala/Galpão Comercial') {
               if (temBanheiros) specs.push(`${ICONS.bath}${p.banheiros} banheiros`);
               if (temVagas) specs.push(`${ICONS.car}${p.vagas} vagas`);
               if (temArea) specs.push(`${ICONS.area}${p.area} m²`);

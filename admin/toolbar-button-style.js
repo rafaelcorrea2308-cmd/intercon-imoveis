@@ -49,6 +49,7 @@
     },
     {
       textos: ['Publicar', 'Publicado'],
+      esconderIrmaoSeta: true,
       estilo: Object.assign({}, estiloBotaoGrande, {
         backgroundColor: '#00A62A',
         color: '#ffffff',
@@ -134,6 +135,26 @@
     return text.indexOf(alvo) !== -1;
   }
 
+  function esconderSetaVizinha(btn) {
+    // A setinha ▼ do menu suspenso normalmente é um botão separado,
+    // "colado" visualmente ao lado do botão Publicar/Publicado, sem
+    // texto (só um ícone). Como já escondemos todos os itens de dentro
+    // desse menu, a seta ficaria abrindo uma caixinha vazia — por isso
+    // procuramos ela entre os elementos vizinhos do botão principal e
+    // escondemos também.
+    var pai = btn.parentElement;
+    if (!pai) return;
+    var candidatos = pai.querySelectorAll('button, [role="button"]');
+    for (var i = 0; i < candidatos.length; i++) {
+      var el = candidatos[i];
+      if (el === btn) continue;
+      var texto = (el.textContent || '').trim();
+      if (texto) continue; // só mexe em botões sem texto (ícone puro)
+      el.setAttribute(STYLED_FLAG, '1');
+      el.style.display = 'none';
+    }
+  }
+
   function aplicarEstilos() {
     var buttons = document.querySelectorAll(
       'button, a, label, [role="button"], [role="menuitem"]'
@@ -158,6 +179,9 @@
           var estilo = REGRAS[r].estilo;
           for (var prop in estilo) {
             btn.style[prop] = estilo[prop];
+          }
+          if (REGRAS[r].esconderIrmaoSeta) {
+            esconderSetaVizinha(btn);
           }
           break;
         }
