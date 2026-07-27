@@ -75,6 +75,19 @@
       textos: ['FOTO'],
       modo: 'exato',
       estilo: { display: 'none' }
+    },
+    {
+      // Itens extras do menu suspenso (setinha ▼) dos botões
+      // Publicar/Publicado — deixa só a ação simples de publicar.
+      textos: [
+        'Duplicado',
+        'Duplicar',
+        'PUBLICAR AGORA',
+        'PUBLICAR E CRIAR NOVO(A)',
+        'PUBLICAR E DUPLICAR'
+      ],
+      modo: 'exato',
+      estilo: { display: 'none' }
     }
   ];
 
