@@ -12,8 +12,8 @@ public_folder: "assets/anuncios"
 
 collections:
   - name: "imoveis"
-    label: "Imóveis"
-    label_singular: "Imóvel"
+    label: "Publicações"
+    label_singular: "Publicar"
     folder: "content/imoveis"
     create: true
     extension: "json"
