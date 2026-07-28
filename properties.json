@@ -104,24 +104,25 @@
       ]
     },
     {
-      "quartos": 0,
+      "quartos": 2,
       "cidade": "Campo Grande - MS",
-      "bairro": "Monte Castelo",
-      "descricao": "Casa ampla em condomínio fechado, com suíte, escritório e área gourmet. Segurança 24h e área de lazer compartilhada.",
-      "area": 210,
+      "bairro": "Jardim Aeroporto",
+      "descricao": "Casa individual, contendo 2 quartos, sala ampla, cozinha, área de serviço e quintal. Agende sua visita",
+      "endereco": "r. itapeva 668, jardim aeroporto, campo grande - ms",
+      "area": 69,
       "vagas": 2,
-      "preco": 2200,
-      "finalidade": "Aluguel",
+      "preco": 280000,
+      "finalidade": "Venda",
       "whatsapp": "5567992277174",
       "tipo": "Studio",
       "disponivel": true,
-      "banheiros": 0,
-      "titulo": "Casa no Monte Castelo",
+      "banheiros": 1,
+      "titulo": "Minha Casa Minha Vida",
       "id": "3",
       "imagens": [
         {
           "tipo": "imagem",
-          "src": "assets/anuncios/3/whatsapp-image-2026-07-24-at-14.51.19-1-.png"
+          "src": "assets/anuncios/3/10_06_2026.jpeg"
         }
       ]
     },
