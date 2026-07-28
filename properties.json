@@ -28,30 +28,82 @@
       ]
     },
     {
-      "quartos": "",
-      "cidade": "Vilhena - RO",
-      "bairro": "Centro",
-      "descricao": "Casa compacta e prática, ótima para casal ou pequena família. Rua tranquila, próxima a comércio e ponto de ônibus.",
-      "endereco": "rua curitiba, 520, vilhena, rondonia",
-      "area": 128,
-      "vagas": "",
-      "preco": "",
-      "finalidade": "Aluguel",
-      "whatsapp": "5565999405189",
+      "quartos": 3,
+      "cidade": "Campo Grande - MS",
+      "bairro": "Morada dos Deuses",
+      "descricao": "Casa Nova, contendo 2 quartos, 1 suíte, banheiro social, lavabo, sala pé direito duplo, cozinha, área gourmet, lavanderia, piscina. Excelente acabamento e localização. Agende sua visita.",
+      "endereco": "Rua Dionysios 72, Campo Grande, Mato Grosso do Sul",
+      "area": 137,
+      "vagas": 2,
+      "preco": 860000,
+      "finalidade": "Venda",
+      "whatsapp": "5567992277174",
       "tipo": "Casa",
       "disponivel": true,
-      "unidade_temporada": "dia",
-      "banheiros": "",
-      "titulo": "Casa em Vilhena",
+      "unidade_temporada": null,
+      "banheiros": 3,
+      "titulo": "Casa Nova próximo UCDB",
       "id": "2",
       "imagens": [
         {
           "tipo": "imagem",
-          "src": "assets/anuncios/2/captura-de-tela-2023-11-18-182004.png"
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.59.03.jpeg"
         },
         {
           "tipo": "imagem",
-          "src": "assets/anuncios/2/whatsapp-image-2026-07-24-at-14.51.19.jpeg"
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.59.04-2-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.59.02-1-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.58.59-3-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.58.52-2-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.58.53.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.58.53-1-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.58.58-1-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.58.57-1-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.58.56-1-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.58.55-1-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.58.54-3-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.59.00-1-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.59.00.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/2/whatsapp-image-2026-05-02-at-06.59.00-3-.jpeg"
         }
       ]
     },
