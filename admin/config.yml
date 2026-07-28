@@ -68,7 +68,7 @@ collections:
         widget: "select"
         options: ["Casa", "Apartamento", "Studio", "Terreno", "Sala/Galpão Comercial", "Chácara/Fazenda", "Outro"]
         default: "Casa"
-      - { label: "Preço (R$)", name: "preco", widget: "number", value_type: "int", required: false }
+      - { label: "Preço (R$)", name: "preco", widget: "number", value_type: "int", required: false, min: 1, hint: "Deixe em branco se não quiser informar. Não é permitido salvar com valor 0." }
       - { label: "Quartos", name: "quartos", widget: "number", value_type: "int", required: false }
       - { label: "Banheiros", name: "banheiros", widget: "number", value_type: "int", required: false }
       - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int", required: false }
