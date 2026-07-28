@@ -150,7 +150,7 @@
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
       "tipo": "Apartamento",
-      "disponivel": true,
+      "disponivel": false,
       "unidade_temporada": "semana",
       "banheiros": 4,
       "titulo": "Casa na Coophavila teste edgar",
