@@ -2,9 +2,9 @@
   "quartos": 2,
   "cidade": "Campo Grande ",
   "bairro": "Jardim Aeroporto",
-  "descricao": "Casa individual, contendo 2 quartos, sala ampla, cozinha, área de serviço e quintal. Agende sua visita",
+  "descricao": "Casa individual, contendo 2 quartos, sala ampla, cozinha, estacionamento, área de serviço e quintal. Agende sua visita. ",
   "endereco": "r. itapeva 668, jardim aeroporto, campo grande - ms",
-  "area": 69,
+  "area": 69.45,
   "vagas": 2,
   "preco": 280000,
   "fotos": [
