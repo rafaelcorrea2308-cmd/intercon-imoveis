@@ -38,7 +38,7 @@ function specsForType(p) {
       const temQuartos = p.quartos !== undefined && p.quartos !== null && p.quartos !== '' && Number(p.quartos) !== 0;
       const temBanheiros = p.banheiros !== undefined && p.banheiros !== null && p.banheiros !== '' && Number(p.banheiros) !== 0;
       const temVagas = p.vagas !== undefined && p.vagas !== null && p.vagas !== '' && Number(p.vagas) !== 0;
-      const temArea = p.area !== undefined && p.area !== null && p.area !== '';
+      const temArea = p.area !== undefined && p.area !== null && p.area !== '' && Number(p.area) !== 0;
 
   if (tipo === 'Terreno') {
               if (temArea) specs.push(`${ICONS.area}${p.area}m²`);
@@ -64,7 +64,7 @@ function detailSpecsForType(p) {
       const temQuartos = p.quartos !== undefined && p.quartos !== null && p.quartos !== '' && Number(p.quartos) !== 0;
       const temBanheiros = p.banheiros !== undefined && p.banheiros !== null && p.banheiros !== '' && Number(p.banheiros) !== 0;
       const temVagas = p.vagas !== undefined && p.vagas !== null && p.vagas !== '' && Number(p.vagas) !== 0;
-      const temArea = p.area !== undefined && p.area !== null && p.area !== '';
+      const temArea = p.area !== undefined && p.area !== null && p.area !== '' && Number(p.area) !== 0;
 
   if (tipo === 'Terreno') {
               if (temArea) specs.push(`${ICONS.area}${p.area} m²`);
