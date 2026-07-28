@@ -129,7 +129,7 @@ function cardTemplate(p) {
             <a class="card" href="imovel.html?id=${p.id}">
             <div class="photo-wrap">
             ${thumb ? `<img src="${thumb}" alt="Foto da casa em ${p.bairro}" loading="lazy">` : `<div class="no-photo">${ICONS.camera}<span>Sem foto</span></div>`}
-            <span class="badge-pill">${p.finalidade || 'Aluguel'}</span>
+            ${(p.finalidade || 'Aluguel') !== 'Obras e serviços' ? `<span class="badge-pill">${p.finalidade || 'Aluguel'}</span>` : ''}
             </div>
             <div class="card-body">
             <div class="card-price">${precoHtml(p)}</div>
@@ -331,7 +331,7 @@ function galleryTemplate(p) {
                           <button class="carousel-arrow prev" type="button" aria-label="Anterior">&#10094;</button>
                                   <button class="carousel-arrow next" type="button" aria-label="Próxima">&#10095;</button>
                                           <div class="carousel-dots">${dots}</div>` : ''}
-                                                <span class="badge-pill">${p.finalidade || 'Aluguel'}</span>
+                                                ${(p.finalidade || 'Aluguel') !== 'Obras e serviços' ? `<span class="badge-pill">${p.finalidade || 'Aluguel'}</span>` : ''}
                                                     </div>`;
 }
 
