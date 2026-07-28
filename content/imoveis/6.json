@@ -1,22 +1,31 @@
 {
   "quartos": 3,
-  "cidade": "Campo Grande ",
-  "bairro": "Amambaí",
-  "descricao": "Casa recém-reformada, piso porcelanato, cozinha planejada e edícula nos fundos. Próxima à Afonso Pena.",
-  "endereco": "travessa torres, 55",
-  "area": 155,
+  "cidade": "Bonito ",
+  "bairro": "Centro",
+  "descricao": "2 Casas geminadas executadas na cidade de Bonito/MS, contendo 1 suíte e 2 quartos com demais dependências. Execução da obra no regime de Empreitada com pagamento por Etapas.",
+  "endereco": "R. VICENTE JACQUES, 2300, BONITO - MS",
+  "area": 131.98,
   "vagas": 2,
-  "preco": 21669,
+  "preco": "",
   "fotos": [
-    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
+    "assets/anuncios/6/maquete-obra179.jpeg",
+    "assets/anuncios/6/timephoto_20260228_093013.jpg",
+    "assets/anuncios/6/timephoto_20260228_093036.jpg",
+    "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.14-2-.jpeg",
+    "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.14-1-.jpeg",
+    "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.14.jpeg",
+    "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.13-1-.jpeg",
+    "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.13-2-.jpeg"
   ],
-  "finalidade": "Aluguel",
+  "finalidade": "Obras e serviços",
   "uf": "MS",
   "whatsapp": "5567992277174",
   "tipo": "Casa",
   "disponivel": true,
-  "videos": [],
+  "videos": [
+    "assets/anuncios/6/video-2025-06-07.mp4"
+  ],
   "banheiros": 2,
-  "titulo": "Casa no Amambaí",
+  "titulo": "OBRA POR ADMINISTRAÇÃO",
   "id": "6"
 }
