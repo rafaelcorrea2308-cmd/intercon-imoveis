@@ -1,11 +1,11 @@
 {
   "quartos": 0,
   "cidade": "Campo Grande",
-  "bairro": "ssde",
+  "bairro": "Centro",
   "descricao": "Faça seu orçamento, reforme seu Apartamento com pagamento em 12 parcelas descontadas automaticamente do aluguel. Seu Apartamento valorizado e gerando renda. Agende uma visita  ",
   "area": 0,
-  "vagas": 4,
-  "preco": 0,
+  "vagas": 0,
+  "preco": "",
   "fotos": [
     "assets/anuncios/1/reforma-e-aluguel-de-apartamentos-post-para-facebook-.png"
   ],
