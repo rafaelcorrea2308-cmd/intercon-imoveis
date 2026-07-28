@@ -49,13 +49,14 @@ collections:
     fields:
       - { label: "ID (número único, definido na criação — não pode ser alterado depois)", name: "id", widget: "lockedid" }
       - { label: "Disponível", name: "disponivel", widget: "boolean", default: true, hint: "Desmarque quando o imóvel for alugado ou vendido." }
-      - label: "UF (estado) — Obrigatório"
+      - label: "UF (estado)"
         name: "uf"
         widget: "select"
         options: ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
         default: "MS"
-      - { label: "Cidade — Obrigatório", name: "cidade", widget: "string", default: "Campo Grande", hint: "Digite apenas o nome da cidade, sem o estado (o estado é selecionado no campo UF acima)." }
-      - { label: "Bairro — Obrigatório", name: "bairro", widget: "string" }
+        required: false
+      - { label: "Cidade", name: "cidade", widget: "string", default: "Campo Grande", required: false, hint: "Digite apenas o nome da cidade, sem o estado (o estado é selecionado no campo UF acima)." }
+      - { label: "Bairro", name: "bairro", widget: "string", required: false }
       - { label: "Título do anúncio — Obrigatório", name: "titulo", widget: "string" }
       - label: "Finalidade — Obrigatório"
         name: "finalidade"
