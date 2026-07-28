@@ -186,24 +186,56 @@
     },
     {
       "quartos": 3,
-      "cidade": "Campo Grande - MS",
-      "bairro": "Amambaí",
-      "descricao": "Casa recém-reformada, piso porcelanato, cozinha planejada e edícula nos fundos. Próxima à Afonso Pena.",
-      "endereco": "travessa torres, 55",
-      "area": 155,
+      "cidade": "Bonito - MS",
+      "bairro": "Centro",
+      "descricao": "2 Casas geminadas executadas na cidade de Bonito/MS, contendo 1 suíte e 2 quartos com demais dependências. Execução da obra no regime de Empreitada com pagamento por Etapas.",
+      "endereco": "R. VICENTE JACQUES, 2300, BONITO - MS",
+      "area": 131.98,
       "vagas": 2,
-      "preco": 21669,
-      "finalidade": "Aluguel",
+      "preco": "",
+      "finalidade": "Obras e serviços",
       "whatsapp": "5567992277174",
       "tipo": "Casa",
       "disponivel": true,
       "banheiros": 2,
-      "titulo": "Casa no Amambaí",
+      "titulo": "OBRA POR ADMINISTRAÇÃO",
       "id": "6",
       "imagens": [
         {
           "tipo": "imagem",
-          "src": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
+          "src": "assets/anuncios/6/maquete-obra179.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/6/timephoto_20260228_093013.jpg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/6/timephoto_20260228_093036.jpg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.14-2-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.14-1-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.14.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.13-1-.jpeg"
+        },
+        {
+          "tipo": "imagem",
+          "src": "assets/anuncios/6/whatsapp-image-2026-01-30-at-17.47.13-2-.jpeg"
+        },
+        {
+          "tipo": "video",
+          "src": "assets/anuncios/6/video-2025-06-07.mp4"
         }
       ]
     },
