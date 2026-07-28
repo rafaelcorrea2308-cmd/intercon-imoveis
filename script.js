@@ -35,9 +35,9 @@ function precoHtml(p, mode) {
 function specsForType(p) {
       const tipo = p.tipo || '';
       const specs = [];
-      const temQuartos = p.quartos !== undefined && p.quartos !== null && p.quartos !== '';
-      const temBanheiros = p.banheiros !== undefined && p.banheiros !== null && p.banheiros !== '';
-      const temVagas = p.vagas !== undefined && p.vagas !== null && p.vagas !== '';
+      const temQuartos = p.quartos !== undefined && p.quartos !== null && p.quartos !== '' && Number(p.quartos) !== 0;
+      const temBanheiros = p.banheiros !== undefined && p.banheiros !== null && p.banheiros !== '' && Number(p.banheiros) !== 0;
+      const temVagas = p.vagas !== undefined && p.vagas !== null && p.vagas !== '' && Number(p.vagas) !== 0;
       const temArea = p.area !== undefined && p.area !== null && p.area !== '';
 
   if (tipo === 'Terreno') {
@@ -61,9 +61,9 @@ function specsForType(p) {
 function detailSpecsForType(p) {
       const tipo = p.tipo || '';
       const specs = [];
-      const temQuartos = p.quartos !== undefined && p.quartos !== null && p.quartos !== '';
-      const temBanheiros = p.banheiros !== undefined && p.banheiros !== null && p.banheiros !== '';
-      const temVagas = p.vagas !== undefined && p.vagas !== null && p.vagas !== '';
+      const temQuartos = p.quartos !== undefined && p.quartos !== null && p.quartos !== '' && Number(p.quartos) !== 0;
+      const temBanheiros = p.banheiros !== undefined && p.banheiros !== null && p.banheiros !== '' && Number(p.banheiros) !== 0;
+      const temVagas = p.vagas !== undefined && p.vagas !== null && p.vagas !== '' && Number(p.vagas) !== 0;
       const temArea = p.area !== undefined && p.area !== null && p.area !== '';
 
   if (tipo === 'Terreno') {
