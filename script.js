@@ -196,7 +196,7 @@ function populateBairros(all, cidade) {
     if (bairros.includes(atual)) sel.value = atual;
 }
 
-let finalidadeAtual = 'Aluguel';
+let finalidadeAtual = 'Todos';
 
 function applyFilters(all) {
     const keywordField = document.getElementById('search');
@@ -207,7 +207,7 @@ function applyFilters(all) {
     const bairro = document.getElementById('filter-bairro').value;
 
 let filtered = all.filter(p => p.disponivel);
-    filtered = filtered.filter(p => (p.finalidade || 'Aluguel') === finalidadeAtual);
+    if (finalidadeAtual !== 'Todos') filtered = filtered.filter(p => (p.finalidade || 'Aluguel') === finalidadeAtual);
     if (uf) filtered = filtered.filter(p => extractUF(p.cidade) === uf);
     if (tipo) filtered = filtered.filter(p => p.tipo === tipo);
     if (cidade) filtered = filtered.filter(p => p.cidade === cidade);
@@ -229,7 +229,7 @@ async function initIndexPage() {
         populateTipos(properties);
         populateCidades(properties, '');
         populateBairros(properties, '');
-        renderGrid(properties.filter(p => p.disponivel && (p.finalidade || 'Aluguel') === finalidadeAtual));
+        renderGrid(properties.filter(p => p.disponivel && (finalidadeAtual === 'Todos' || (p.finalidade || 'Aluguel') === finalidadeAtual)));
 
     document.querySelectorAll('.finalidade-tab').forEach(btn => {
         btn.addEventListener('click', () => {
