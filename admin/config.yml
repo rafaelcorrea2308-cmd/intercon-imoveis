@@ -73,7 +73,7 @@ collections:
       - { label: "Quartos", name: "quartos", widget: "number", value_type: "int", required: false, min: 0 }
       - { label: "Banheiros", name: "banheiros", widget: "number", value_type: "int", required: false, min: 0 }
       - { label: "Vagas de garagem", name: "vagas", widget: "number", value_type: "int", required: false, min: 0 }
-      - { label: "Área (m²)", name: "area", widget: "number", value_type: "int", required: false, min: 0 }
+      - { label: "Área (m²)", name: "area", widget: "number", value_type: "float", required: false, min: 0 }
       - { label: "Descrição — Obrigatório", name: "descricao", widget: "text" }
       - label: "Fotos"
         name: "fotos"
