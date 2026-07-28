@@ -196,6 +196,27 @@ function populateBairros(all, cidade) {
     if (bairros.includes(atual)) sel.value = atual;
 }
 
+function initHeaderShareButton() {
+    const btn = document.getElementById('header-share');
+    if (!btn) return;
+    const originalHtml = btn.innerHTML;
+    btn.addEventListener('click', async () => {
+        const url = window.location.href;
+        const shareData = { title: document.title, url };
+        if (navigator.share) {
+            try { await navigator.share(shareData); return; } catch (e) { /* usuário cancelou ou falhou, tenta copiar abaixo */ }
+        }
+        try {
+            await navigator.clipboard.writeText(url);
+            btn.setAttribute('aria-label', 'Link copiado!');
+            btn.style.color = 'var(--price)';
+            setTimeout(() => { btn.innerHTML = originalHtml; btn.setAttribute('aria-label', 'Compartilhar link'); btn.style.color = ''; }, 2000);
+        } catch (e) {
+            window.prompt('Copie o link abaixo:', url);
+        }
+    });
+}
+
 let finalidadeAtual = 'Todos';
 
 function applyFilters(all) {
@@ -223,6 +244,7 @@ let filtered = all.filter(p => p.disponivel);
 }
 
 async function initIndexPage() {
+    initHeaderShareButton();
     try {
         const properties = await loadProperties();
         populateUFs(properties);
@@ -437,6 +459,7 @@ function locationTemplate(p) {
                                                     </div>`;
 }
 async function initDetailPage() {
+    initHeaderShareButton();
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     const container = document.getElementById('detail-container');
