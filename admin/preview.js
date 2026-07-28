@@ -25,9 +25,9 @@
     }
 
     function fmtPreco(preco) {
-      if (preco === undefined || preco === null || preco === '') return '';
+      if (preco === undefined || preco === null || preco === '') return null;
       var n = Number(preco);
-      if (isNaN(n)) return String(preco);
+      if (isNaN(n)) return null;
       return 'R$ ' + n.toLocaleString('pt-BR');
     }
 
@@ -132,7 +132,7 @@ function orderMidias(lista) {
             ),
             h('h1', { style: { margin: '4px 0 6px', fontSize: '26px', fontWeight: '800', letterSpacing: '-0.02em', color: COLORS.ink } }, titulo || '(sem título)'),
             h('p', { style: { margin: '0 0 10px', color: COLORS.inkSoft, fontSize: '15px' } }, [bairro, cidade].filter(Boolean).join(', ')),
-            preco ? h('p', { style: { margin: '0 0 6px', fontWeight: '800', fontSize: '22px', color: COLORS.price } }, fmtPreco(preco) + priceSuffix(finalidade, unidade_temporada)) : null,
+            h('p', { style: { margin: '0 0 6px', fontWeight: '800', fontSize: '22px', color: COLORS.price } }, fmtPreco(preco) ? (fmtPreco(preco) + priceSuffix(finalidade, unidade_temporada)) : 'Consulte o preço'),
             specs.length ? h('p', { style: { margin: '0 0 18px', color: COLORS.inkSoft, fontSize: '13px' } }, specs.join('  •  ')) : null,
             fotos.length ? h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '18px' } },
               fotos.map(function (foto, i) {
