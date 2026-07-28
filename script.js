@@ -459,6 +459,7 @@ function locationTemplate(p) {
                                                     </div>`;
 }
 async function initDetailPage() {
+    initHeaderShareButton();
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     const container = document.getElementById('detail-container');
