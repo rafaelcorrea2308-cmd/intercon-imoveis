@@ -1,29 +1,25 @@
 {
   "imoveis": [
     {
-      "quartos": 3,
+      "quartos": 0,
       "cidade": "Campo Grande - MS",
-      "bairro": "ssde",
-      "descricao": "Casa ampla e bem localizada, com boa ventilacao e acabamento de qualidade. Otimo custo-beneficio para quem busca conforto e praticidade no dia a dia.",
-      "area": 120,
-      "vagas": 4,
-      "preco": 1500,
+      "bairro": "Centro",
+      "descricao": "Faça seu orçamento, reforme seu Apartamento com pagamento em 12 parcelas descontadas automaticamente do aluguel. Seu Apartamento valorizado e gerando renda. Agende uma visita  ",
+      "area": 0,
+      "vagas": 0,
+      "preco": "",
       "finalidade": "Obras e serviços",
       "whatsapp": "5567992277174",
-      "tipo": "Outro",
+      "tipo": "Apartamento",
       "disponivel": true,
-      "unidade_temporada": "semana",
-      "banheiros": 2,
-      "titulo": "edew",
+      "unidade_temporada": null,
+      "banheiros": 0,
+      "titulo": "REFORME E ALUGUE SEU APTO",
       "id": "1",
       "imagens": [
         {
           "tipo": "imagem",
-          "src": "assets/anuncios/1/foto1.jpg"
-        },
-        {
-          "tipo": "imagem",
-          "src": "assets/anuncios/1/foto2.jpg"
+          "src": "assets/anuncios/1/reforma-e-aluguel-de-apartamentos-post-para-facebook-.png"
         }
       ]
     },
