@@ -2,8 +2,8 @@
 
 Site institucional e de listagem de imóveis da InterCon Consultoria Imobiliária (Campo Grande - MS), publicado gratuitamente pelo GitHub Pages e administrado por um painel próprio (Decap CMS) — **sem precisar editar código ou arquivos JSON na mão**.
 
-- 🌐 Site: https://rafaelcorrea2308-cmd.github.io/intercon-imoveis/
-- 🔐 Painel de administração: https://rafaelcorrea2308-cmd.github.io/intercon-imoveis/admin/
+- 🌐 Site: https://interconconsultoria.com.br/
+- 🔐 Painel de administração: https://interconconsultoria.com.br/admin/
 - 📦 Repositório: https://github.com/rafaelcorrea2308-cmd/intercon-imoveis
 
 ---
@@ -12,7 +12,7 @@ Site institucional e de listagem de imóveis da InterCon Consultoria Imobiliári
 
 Todo o cadastro de imóveis é feito pelo **painel de administração**, não por edição manual de arquivos:
 
-1. Acesse https://rafaelcorrea2308-cmd.github.io/intercon-imoveis/admin/
+1. Acesse https://interconconsultoria.com.br/admin/
 2. Faça login com sua conta do GitHub
 3. Adicione, edite ou remova o imóvel pelo formulário (fotos, vídeos, preço, endereço, disponibilidade etc.)
 4. Publique a alteração no painel
