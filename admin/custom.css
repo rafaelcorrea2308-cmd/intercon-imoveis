@@ -6,3 +6,33 @@
    (rótulo cortado e o interruptor "Disponível" deslocado). Esses
    ajustes de acessibilidade acabaram não valendo o risco de quebrar a
    tela em outros lugares sem eu poder testar ao vivo. */
+
+/* Cards da lista de Publicações — aplicado via classe adicionada em
+   admin/list-style.js a links de entrada já existentes (não cria
+   elementos novos, só estiliza o que o Decap renderiza). */
+.intercon-entry-card {
+  display: block;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #E3E8EE;
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(23, 35, 59, 0.05);
+  white-space: pre-line;
+  line-height: 1.55;
+  color: #5B6B82;
+  font-size: 13px;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.intercon-entry-card:hover {
+  box-shadow: 0 4px 12px rgba(23, 35, 59, 0.09);
+  border-color: #C9D3E0;
+}
+
+/* Primeira linha visual do resumo = título do imóvel (via pre-line) */
+.intercon-entry-card::first-line {
+  font-weight: 700;
+  font-size: 15px;
+  color: #17233B;
+}
