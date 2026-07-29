@@ -145,6 +145,14 @@
       if (btn.getAttribute(STYLED_FLAG)) continue;
       var text = (btn.textContent || '').trim();
       if (!text) continue;
+      // Trava de segurança: botões/itens de menu reais sempre têm texto
+      // curto (ex: "Nova", "Publicar", "EXCLUIR ANÚNCIO"). Os cartões da
+      // lista de anúncios (que também são <a>) têm texto bem mais longo,
+      // incluindo título, bairro etc. Sem essa trava, um anúncio cujo
+      // título contivesse a palavra "Nova" (ex: "Casa Nova") ou
+      // "Publicar"/"Duplicado" batia por engano com essas regras via
+      // comparação "contém" e o cartão inteiro ficava colorido.
+      if (text.length > 40) continue;
       for (var r = 0; r < REGRAS.length; r++) {
         var textos = REGRAS[r].textos;
         var exato = REGRAS[r].modo === 'exato';
