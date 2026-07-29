@@ -493,7 +493,6 @@ try {
     <h3>Descrição</h3>
     <p>${p.descricao}</p>
     </div>
-    ${locationTemplate(p)}
     </div>
     </div>
     <div>
@@ -512,6 +511,7 @@ try {
     <button type="button" class="btn btn-share" id="btn-share">${ICONS.share}Compartilhar link</button>
     <div class="ref">Ref. imóvel #${p.id}</div>
     </div>
+    ${locationTemplate(p)}
     </div>
     `;
     initCarousel();
