@@ -173,7 +173,7 @@
       "finalidade": "Aluguel",
       "whatsapp": "5567992277174",
       "tipo": "Casa",
-      "disponivel": true,
+      "disponivel": false,
       "banheiros": 2,
       "titulo": "Casa no Tiradentes",
       "id": "5",
