@@ -203,6 +203,10 @@
       "imagens": [
         {
           "tipo": "imagem",
+          "src": "assets/anuncios/6/placa-de-obra-04nov2025.jpeg"
+        },
+        {
+          "tipo": "imagem",
           "src": "assets/anuncios/6/maquete-obra179.jpeg"
         },
         {
