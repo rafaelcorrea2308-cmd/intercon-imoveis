@@ -2,7 +2,7 @@
   "quartos": 3,
   "cidade": "Campo Grande",
   "bairro": "Morada dos Deuses",
-  "descricao": "Casa Nova, contendo 2 quartos, 1 suíte com closet, banheiro social, lavabo, sala pé direito duplo, cozinha, área gourmet, lavanderia, piscina. Excelente acabamento e localização próximo UCDB. Lote 10x25 m. Venha conhecer, agende sua visita. Aceita Financiamento.",
+  "descricao": "Casa Nova, contendo 2 suítes + 1 suíte com closet, lavabo, sala pé direito duplo, Ampla cozinha, área gourmet, lavanderia e piscina. Excelente acabamento e localização próximo UCDB. Lote 10x25 m. Venha conhecer, agende sua visita. Aceita Financiamento.",
   "endereco": "Rua Dionysos 72 - Vila Nasser - Campo Grande/MS",
   "area": 136.81,
   "vagas": 2,
@@ -34,7 +34,7 @@
     "assets/anuncios/2/whatsapp-video-2026-08-10-at-11.30.19a.mp4",
     "assets/anuncios/2/whatsapp-video-2026-08-12-at-16.47.19.mp4"
   ],
-  "banheiros": 3,
+  "banheiros": 4,
   "titulo": "Casa Nova próximo UCDB",
   "id": "2"
 }
